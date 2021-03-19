@@ -1,20 +1,20 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react'; // commented { useRef }
+// import { useHistory, Link } from 'react-router-dom';
 
-import { useAuth } from '../../providers/Auth';
+// import { useAuth } from '../../providers/Auth';
 import './Home.styles.css';
 import VideoCardList from '../../components/VideoCardList';
 
 function HomePage() {
-  const history = useHistory();
-  const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
+  // const history = useHistory();
+  // const sectionRef = useRef(null);
+  // const { authenticated, logout } = useAuth();
 
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
+  // function deAuthenticate(event) {
+  //   event.preventDefault();
+  //   logout();
+  //   history.push('/');
+  // }
 
   return (
     <div style={{ marginTop: 80 }}>

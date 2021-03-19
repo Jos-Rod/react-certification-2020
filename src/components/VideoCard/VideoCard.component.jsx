@@ -1,4 +1,4 @@
-import React, { isValidElement } from 'react';
+import React from 'react';
 import './VideoCard.styles.css';
 
 const VideoCard = ({ title, videoSrc, description }) => (

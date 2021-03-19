@@ -1,6 +1,6 @@
 import React from 'react';
 import './NavBar.styles.css';
-import { FaUserAlt, FaMoon, FaRegMoon, FaHamburger } from 'react-icons/fa';
+import { FaUserAlt, FaRegMoon } from 'react-icons/fa'; // FaHamburger, FaMoon
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IconContext } from 'react-icons';
 
