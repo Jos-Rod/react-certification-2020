@@ -23,7 +23,7 @@ function HomePage() {
           <VideoCardList />
         </div>
       </section>
-      <section className="homepage" ref={sectionRef}>
+      {/* <section className="homepage" ref={sectionRef}>
         <h1>Hello stranger!</h1>
         {authenticated ? (
           <>
@@ -39,7 +39,7 @@ function HomePage() {
         ) : (
           <Link to="/login">let me in →</Link>
         )}
-      </section>
+      </section> */}
     </div>
     
   );
