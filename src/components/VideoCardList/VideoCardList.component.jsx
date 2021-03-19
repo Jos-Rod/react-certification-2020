@@ -1,18 +1,18 @@
 import React from 'react';
 import './VideoCardList.styles.css';
-import videos from '../mock/youtube-videos-mock.js';
+import videos from '../mock/youtube-videos-mock.json';
 import VideoCard from '../VideoCard/VideoCard.component';
 
-const items = videos[0]["items"];
+const {items} = videos;
 
 function getTitle(video) {
-    return video["snippet"]["title"];
+    return video.snippet.title;
 }
 function getDescription(video) {
-    return video["snippet"]["description"];
+    return video.snippet.description;
 }
 function getVideoSrc(video) {
-    return video["snippet"]["thumbnails"]["high"]["url"];
+    return video.snippet.thumbnails.high.url;
 }
 
 const VideoCardList = ({title, videoSrc, description}) => (

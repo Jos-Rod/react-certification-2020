@@ -1,6 +1,7 @@
 import React from 'react';
 import './NavBar.styles.css';
-import { FaUserAlt, FaMoon, FaRegMoon } from 'react-icons/fa';
+import { FaUserAlt, FaMoon, FaRegMoon, FaHamburger } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import {IconContext} from "react-icons"
 
 // const Rotate = styled.div`
@@ -13,6 +14,9 @@ import {IconContext} from "react-icons"
 const NavBar = () => (
   <IconContext.Provider value={{ style: {fontSize: '36px', color: "rgb(255, 255, 224)"}}}>
     <div className="navBar">
+      <div style={{marginLeft: '10px', display:'flex', alignItems:'center'}}>
+        <GiHamburgerMenu  />
+      </div>
       <div>
         <span></span>
       </div>
