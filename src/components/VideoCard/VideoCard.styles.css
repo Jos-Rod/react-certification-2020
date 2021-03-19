@@ -3,13 +3,17 @@
     background-color: white;
     width: 15rem;
     margin: 10px;
-    border-radius: 14px;
+    border-radius: 10px;
     overflow: hidden;
     transition-duration: 0.05s;
+    display: inline-block;
+    height: 18rem;
+    max-height: 20rem;
+    box-shadow: 0 5px 3px 0 rgba(0, 0, 0 , .1);
 }
 
 .videoCardStyle:hover {
-    background-color: white;
+    background-color: lightyellow;
     width: 15rem;
     margin: 10px;
     border-radius: 10px;
@@ -25,5 +29,6 @@
 
 .descriptionCard {
     margin-top: 0px;
-    font-size: 15px;
+    font-size: 14px;
+    color: gray;
 }

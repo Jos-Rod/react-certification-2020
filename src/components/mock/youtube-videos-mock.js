@@ -1,4 +1,4 @@
-export const videos = [
+const videos = [
   {
     "kind": "youtube#searchListResponse",
     "etag": "LRviZfd_p3HDDD2uBk5Qv7zaEQU",
@@ -856,3 +856,5 @@ export const videos = [
     ]
   }
 ];
+
+export default videos;

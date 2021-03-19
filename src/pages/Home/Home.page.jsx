@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import { useAuth } from '../../providers/Auth';
 import './Home.styles.css';
-import VideoCard from '../../components/VideoCard';
+import VideoCardList from '../../components/VideoCardList';
 
 function HomePage() {
   const history = useHistory();
@@ -20,7 +20,7 @@ function HomePage() {
     <div style={{ marginTop: 80 }}>
       <section>
         <div>
-          <VideoCard title="Hello" description="descrip" videoSrc="https://esports.as.com/2021/03/02/fortnite/LazarBeam-Fortnite_1442565741_629436_1440x600.jpg" />
+          <VideoCardList />
         </div>
       </section>
       <section className="homepage" ref={sectionRef}>

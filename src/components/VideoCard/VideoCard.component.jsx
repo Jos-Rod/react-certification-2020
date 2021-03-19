@@ -8,7 +8,8 @@ const VideoCard = ({title, videoSrc, description}) => (
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       marginBottom: '0px',
-        backgroundImage: `url("${videoSrc}")` }}></div> 
+        backgroundImage: `url("${videoSrc}")`,
+        backgroundPosition: 'center', }}></div> 
         {/* https://esports.as.com/2021/03/02/fortnite/LazarBeam-Fortnite_1442565741_629436_1440x600.jpg */}
       <div style={{ margin: '9px' }}>
           {/* div for title and description */}
