@@ -16,7 +16,7 @@ const NavBar = () => (
     value={{ style: { fontSize: '36px', color: 'rgb(255, 255, 224)' } }}
   >
     <div className="navBar">
-      <div style={{ marginLeft: '10px', display: 'flex', alignItems: 'center' }}>
+      <div style={{ marginLeft: '30px', display: 'flex', alignItems: 'center' }}>
         <GiHamburgerMenu />
       </div>
       <div>
