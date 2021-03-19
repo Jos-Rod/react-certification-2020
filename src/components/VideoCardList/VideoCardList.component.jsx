@@ -3,27 +3,32 @@ import './VideoCardList.styles.css';
 import videos from '../mock/youtube-videos-mock.json';
 import VideoCard from '../VideoCard/VideoCard.component';
 
-const {items} = videos;
+const { items } = videos;
 
-function getTitle(video) {
-    return video.snippet.title;
+export function getTitle(video) {
+  const aux = video.snippet.title;
+  return aux != null ? aux : '';
 }
-function getDescription(video) {
-    return video.snippet.description;
+export function getDescription(video) {
+  const aux = video.snippet.description;
+  return aux != null ? aux : '';
 }
-function getVideoSrc(video) {
-    return video.snippet.thumbnails.high.url;
+export function getVideoSrc(video) {
+  const aux = video.snippet.thumbnails.high.url;
+  return aux != null ? aux : '';
 }
 
-const VideoCardList = ({title, videoSrc, description}) => (
-    <div className="videosList">
-        {items.map(vid => <VideoCard 
-            title={getTitle(vid)} 
-            description={getDescription(vid)} 
-            videoSrc={getVideoSrc(vid)}
-            />
-        )}
-    </div> 
-  );
-  
-  export default VideoCardList;
+const VideoCardList = ({ title, videoSrc, description }) => (
+  <div className="videosList">
+    {items.map((vid) => (
+      <VideoCard
+        title={getTitle(vid)}
+        description={getDescription(vid)}
+        videoSrc={getVideoSrc(vid)}
+        key={getVideoSrc(vid)} 
+      />
+    ))}
+  </div>
+);
+
+export default VideoCardList;

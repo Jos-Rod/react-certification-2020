@@ -11,13 +11,7 @@
 }
 
 .niceInput {
-    /* width: 30%; */
-    /* background:chartreuse;
-    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
-    border: 0;
-    outline: 0;
-    padding: 22px 18px; */
-    width: 15rem;
+    width: 18rem;
     padding: 14px 18px;
     border: 0;
     outline: 0;
