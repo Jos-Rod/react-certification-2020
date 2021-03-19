@@ -1,0 +1,29 @@
+
+.videoCardStyle {
+    background-color: white;
+    width: 15rem;
+    margin: 10px;
+    border-radius: 14px;
+    overflow: hidden;
+    transition-duration: 0.05s;
+}
+
+.videoCardStyle:hover {
+    background-color: white;
+    width: 15rem;
+    margin: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0 , .1);
+}
+
+.titleCard {
+    font-size: large;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.descriptionCard {
+    margin-top: 0px;
+    font-size: 15px;
+}

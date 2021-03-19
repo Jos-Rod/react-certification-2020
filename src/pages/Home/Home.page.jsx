@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import { useAuth } from '../../providers/Auth';
 import './Home.styles.css';
-import NavBar from '../../components/NavBar';
+import VideoCard from '../../components/VideoCard';
 
 function HomePage() {
   const history = useHistory();
@@ -17,7 +17,12 @@ function HomePage() {
   }
 
   return (
-    <div>
+    <div style={{ marginTop: 80 }}>
+      <section>
+        <div>
+          <VideoCard title="Hello" description="descrip" videoSrc="https://esports.as.com/2021/03/02/fortnite/LazarBeam-Fortnite_1442565741_629436_1440x600.jpg" />
+        </div>
+      </section>
       <section className="homepage" ref={sectionRef}>
         <h1>Hello stranger!</h1>
         {authenticated ? (
