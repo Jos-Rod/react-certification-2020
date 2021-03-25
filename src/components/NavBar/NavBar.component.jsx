@@ -4,12 +4,6 @@ import { FaUserAlt, FaRegMoon } from 'react-icons/fa'; // FaHamburger, FaMoon
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IconContext } from 'react-icons';
 
-// const Rotate = styled.div`
-//   display: inline-block;
-//   animation: ${rotate} 2s linear infinite;
-//   padding: 2rem 1rem;
-//   font-size: 1.2rem;
-// `;
 
 const NavBar = () => (
   <IconContext.Provider
