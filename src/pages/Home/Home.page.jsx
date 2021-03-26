@@ -18,9 +18,9 @@ function HomePage({ videoResults }) {
   // }
 
   return (
-    <div style={{ marginTop: 80 }}>
+    <div style={{ marginTop: 100 }}>
       <section>
-        <div>
+        <div style={{ textAlign: 'center' }}>
           <VideoCardList videoList={videoResults} />
         </div>
       </section>

@@ -16,7 +16,7 @@ const VideoCard = ({ title, videoSrc, description }) => (
       }}
     />
     {/* https://esports.as.com/2021/03/02/fortnite/LazarBeam-Fortnite_1442565741_629436_1440x600.jpg */}
-    <div style={{ margin: '9px' }}>
+    <div style={{ margin: '9px', textAlign: 'left' }}>
       {/* div for title and description */}
       <p className="titleCard">{title}</p>
       <p className="descriptionCard">{description}</p>

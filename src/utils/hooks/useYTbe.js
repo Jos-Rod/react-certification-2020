@@ -18,13 +18,16 @@ function useYTubeRequest(searchText) {
         fetch(myrequest).then((res) => res.json()).then((val) => {
             setList(val);
             setJustSearched(true);
-        })
+        });
     }, [searchText]);
 
     if (!justSearched) {
-        return [];
+        return { videos: [], channels: [] };
     }
-    return list.items;
+    console.log(`Videos: ${list.items.filter(v => v.id.kind.includes("video")).length}`);
+    console.log(`Channels: ${list.items.filter(v => v.id.kind.includes("channel")).length}`);
+    // return list.items;
+    return { videos: list.items.filter(v => v.id.kind.includes("video")), channels: list.items.filter(v => v.id.kind.includes("channel")) };
 }
 
 export default useYTubeRequest;

@@ -34,7 +34,7 @@ function App() {
 
   const gotItemsFromSearch = {};
   const [valSearch, setValSearch] = useState("");
-  const videoResults = useYTubeRequest(valSearch);
+  const {videos, channels} = useYTubeRequest(valSearch);
 
   return (
     <BrowserRouter>
@@ -43,7 +43,7 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/">
-              <HomePage videoResults={videoResults} />
+              <HomePage videoResults={videos} channelResults={channels} />
             </Route>
             <Route exact path="/login">
               <LoginPage />
