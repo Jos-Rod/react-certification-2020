@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useReducer, useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AuthProvider from '../../providers/Auth';
@@ -31,10 +31,18 @@ function App() {
     };
   }, []);
 
+  const gotItemsFromSearch = {};
+  const [valSearch, setValSearch] = useState("");
+
+  useEffect(() => {
+    console.log("SI CAMBIO");
+    console.log(valSearch);
+  }, [valSearch]);
+
   return (
     <BrowserRouter>
       <AuthProvider>
-        <NavBar />
+        <NavBar handleValSearch={setValSearch} />
         <Layout>
           <Switch>
             <Route exact path="/">

@@ -18,7 +18,30 @@ export function getVideoSrc(video) {
   return aux != null ? aux : '';
 }
 
+// function clicked() {
+//   console.log("Empezando loading");
+//   const search = "cbum";
+//   const API_KEY = "AIzaSyBSdS56YmAQSmNNMAUgkFMmgWYuPeKegcA";
+//   var myHeaders = new Headers();
+//   var myInit = { method: 'GET',
+//                headers: myHeaders,
+//                mode: 'cors',
+//                cache: 'default' };
+//   var myrequest = new Request(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=cbum&key=AIzaSyBSdS56YmAQSmNNMAUgkFMmgWYuPeKegcA`, myInit);
+//   fetch(myrequest).then((res) => res.json()).then((val) => {
+//     console.log("ADF");
+//     console.log(val);
+//   });
+// }
+
+
+
 const VideoCardList = ({ title, videoSrc, description }) => (
+  <>
+  <div>
+    <h3>Hola mundo</h3>
+    <button >Load </button>
+  </div>
   <div className="videosList">
     {items.map((vid) => (
       <VideoCard
@@ -29,6 +52,7 @@ const VideoCardList = ({ title, videoSrc, description }) => (
       />
     ))}
   </div>
+  </>
 );
 
 export default VideoCardList;
