@@ -4,8 +4,9 @@ import React from 'react'; // commented { useRef }
 // import { useAuth } from '../../providers/Auth';
 import './Home.styles.css';
 import VideoCardList from '../../components/VideoCardList';
+import videos from '../../components/mock/youtube-videos-mock.json';
 
-function HomePage() {
+function HomePage({ videoResults }) {
   // const history = useHistory();
   // const sectionRef = useRef(null);
   // const { authenticated, logout } = useAuth();
@@ -20,7 +21,7 @@ function HomePage() {
     <div style={{ marginTop: 80 }}>
       <section>
         <div>
-          <VideoCardList />
+          <VideoCardList videoList={videoResults} />
         </div>
       </section>
       {/* <section className="homepage" ref={sectionRef}>

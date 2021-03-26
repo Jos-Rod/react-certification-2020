@@ -17,7 +17,7 @@ const NavBar = (props) => (
       <div>
         <span />
       </div>
-      <SearchBar itemsFromSearch={props.handleValSearch} />
+      <SearchBar searchValue={props.handleValSearch} />
       <div className="rightActions" style={{ display: 'flex', alignItems: 'center' }}>
         <button className="buttonUser">
           <FaRegMoon />

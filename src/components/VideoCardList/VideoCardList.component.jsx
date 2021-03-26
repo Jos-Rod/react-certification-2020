@@ -1,9 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './VideoCardList.styles.css';
-import videos from '../mock/youtube-videos-mock.json';
 import VideoCard from '../VideoCard/VideoCard.component';
-
-const { items } = videos;
 
 export function getTitle(video) {
   const aux = video.snippet.title;
@@ -36,14 +33,18 @@ export function getVideoSrc(video) {
 
 
 
-const VideoCardList = ({ title, videoSrc, description }) => (
-  <>
-  <div>
-    <h3>Hola mundo</h3>
-    <button >Load </button>
-  </div>
+const VideoCardList = ({ videoList }) => {
+  
+  const [videosToRender, setVideosToRender] = useState([]);
+
+  useEffect(() => {
+    console.log("Video list updated");
+    setVideosToRender(videoList);
+  }, [videoList]);
+  
+  return (
   <div className="videosList">
-    {items.map((vid) => (
+    {videosToRender.map((vid) => (
       <VideoCard
         title={getTitle(vid)}
         description={getDescription(vid)}
@@ -51,8 +52,7 @@ const VideoCardList = ({ title, videoSrc, description }) => (
         key={getVideoSrc(vid)} 
       />
     ))}
-  </div>
-  </>
-);
+  </div>)
+};
 
 export default VideoCardList;

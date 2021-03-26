@@ -11,6 +11,7 @@ import Fortune from '../Fortune';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
 import NavBar from '../NavBar';
+import useYTubeRequest from '../../utils/hooks/useYTbe.js';
 
 function App() {
   useLayoutEffect(() => {
@@ -33,11 +34,7 @@ function App() {
 
   const gotItemsFromSearch = {};
   const [valSearch, setValSearch] = useState("");
-
-  useEffect(() => {
-    console.log("SI CAMBIO");
-    console.log(valSearch);
-  }, [valSearch]);
+  const videoResults = useYTubeRequest(valSearch);
 
   return (
     <BrowserRouter>
@@ -46,7 +43,7 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/">
-              <HomePage />
+              <HomePage videoResults={videoResults} />
             </Route>
             <Route exact path="/login">
               <LoginPage />
