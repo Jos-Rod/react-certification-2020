@@ -5,6 +5,7 @@ import React from 'react'; // commented { useRef }
 import './Home.styles.css';
 import VideoCardList from '../../components/VideoCardList';
 import ChannelCard from '../../components/ChannelCard';
+import ChannelCardList from '../../components/ChannelCardList';
 import videos from '../../components/mock/youtube-videos-mock.json';
 
 function HomePage({ videoResults, channelResults }) {
@@ -23,7 +24,8 @@ function HomePage({ videoResults, channelResults }) {
       <section>
         <div style={{ textAlign: 'center' }}>
           <div style={{ display: 'flex', justifyContent:'center'}}>
-          { channelResults.length > 0 && <ChannelCard channel={channelResults[0]} /> }
+          {/* { channelResults.length > 0 && <ChannelCard channel={channelResults[0]} /> } */}
+          { channelResults.length > 0 && <ChannelCardList channelList={channelResults} /> }
           </div>
           {/* <ChannelCard /> */}
           <VideoCardList videoList={videoResults} />
