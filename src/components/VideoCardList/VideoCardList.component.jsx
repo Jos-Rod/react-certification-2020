@@ -1,19 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './VideoCardList.styles.css';
 import VideoCard from '../VideoCard/VideoCard.component';
-
-export function getTitle(video) {
-  const aux = video.snippet.title;
-  return aux != null ? aux : '';
-}
-export function getDescription(video) {
-  const aux = video.snippet.description;
-  return aux != null ? aux : '';
-}
-export function getVideoSrc(video) {
-  const aux = video.snippet.thumbnails.high.url;
-  return aux != null ? aux : '';
-}
+import { getVideoSrc, getTitle, getDescription } from '../../utils/utils.js';
 
 // function clicked() {
 //   console.log("Empezando loading");

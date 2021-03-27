@@ -4,9 +4,10 @@ import React from 'react'; // commented { useRef }
 // import { useAuth } from '../../providers/Auth';
 import './Home.styles.css';
 import VideoCardList from '../../components/VideoCardList';
+import ChannelCard from '../../components/ChannelCard';
 import videos from '../../components/mock/youtube-videos-mock.json';
 
-function HomePage({ videoResults }) {
+function HomePage({ videoResults, channelResults }) {
   // const history = useHistory();
   // const sectionRef = useRef(null);
   // const { authenticated, logout } = useAuth();
@@ -21,6 +22,10 @@ function HomePage({ videoResults }) {
     <div style={{ marginTop: 100 }}>
       <section>
         <div style={{ textAlign: 'center' }}>
+          <div style={{ display: 'flex', justifyContent:'center'}}>
+          { channelResults.length > 0 && <ChannelCard channel={channelResults[0]} /> }
+          </div>
+          {/* <ChannelCard /> */}
           <VideoCardList videoList={videoResults} />
         </div>
       </section>
