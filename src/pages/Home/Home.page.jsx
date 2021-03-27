@@ -19,16 +19,27 @@ function HomePage({ videoResults, channelResults }) {
   //   history.push('/');
   // }
 
+  const cardListWidth = channelResults.length > 0 ? '70%' : '100%';
+
   return (
     <div style={{ marginTop: 100 }}>
       <section>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ display: 'flex', justifyContent:'center'}}>
+        <div style={{ display: 'flex' }}>
+          
+          {/* <div style={{ display: 'flex', justifyContent:'center'}}> */}
           {/* { channelResults.length > 0 && <ChannelCard channel={channelResults[0]} /> } */}
-          { channelResults.length > 0 && <ChannelCardList channelList={channelResults} /> }
-          </div>
+          {/* { channelResults.length > 0 && <ChannelCardList channelList={channelResults} /> } */}
+          {/* </div> */}
           {/* <ChannelCard /> */}
-          <VideoCardList videoList={videoResults} />
+          {/* <VideoCardList videoList={videoResults} /> */}
+          
+          <div style={{ display:'inline', textAlign: 'center', width: cardListWidth }}>
+            <VideoCardList videoList={videoResults} />
+          </div>
+          { channelResults.length > 0 &&
+          <div style={{ display:'inline', width: '30%' }}>
+            <ChannelCardList channelList={channelResults} itemsAlignTo="left" /> 
+          </div>}
         </div>
       </section>
       {/* <section className="homepage" ref={sectionRef}>
