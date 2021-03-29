@@ -8,7 +8,7 @@ import ChannelCard from '../../components/ChannelCard';
 import ChannelCardList from '../../components/ChannelCardList';
 import videos from '../../components/mock/youtube-videos-mock.json';
 
-function HomePage({ videoResults, channelResults }) {
+function HomePage({ videoResults, channelResults, setVideoSelected }) {
   // const history = useHistory();
   // const sectionRef = useRef(null);
   // const { authenticated, logout } = useAuth();
@@ -26,15 +26,8 @@ function HomePage({ videoResults, channelResults }) {
       <section>
         <div style={{ display: 'flex' }}>
           
-          {/* <div style={{ display: 'flex', justifyContent:'center'}}> */}
-          {/* { channelResults.length > 0 && <ChannelCard channel={channelResults[0]} /> } */}
-          {/* { channelResults.length > 0 && <ChannelCardList channelList={channelResults} /> } */}
-          {/* </div> */}
-          {/* <ChannelCard /> */}
-          {/* <VideoCardList videoList={videoResults} /> */}
-          
           <div style={{ display:'inline', textAlign: 'center', width: cardListWidth }}>
-            <VideoCardList videoList={videoResults} />
+            <VideoCardList videoList={videoResults} setVideoSelected={setVideoSelected} />
           </div>
           { channelResults.length > 0 &&
           <div style={{ display:'inline', width: '30%' }}>

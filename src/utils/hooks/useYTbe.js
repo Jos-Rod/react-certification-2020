@@ -18,10 +18,13 @@ function useYTubeRequest(searchText) {
         fetch(myrequest).then((res) => res.json()).then((val) => {
             setList(val);
             setJustSearched(true);
+        }).catch((e) => {
+            console.log("Error while using youtube API");
+            console.log(e);
         });
     }, [searchText]);
-
-    if (!justSearched || list.isEmpty) {
+    console.log(list);
+    if (!justSearched || Object.keys(list).length == 0) {
         return { videos: [], channels: [] };
     }
     // console.log(`Videos: ${list.items.filter(v => v.id.kind.includes("video")).length}`);

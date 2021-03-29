@@ -12,6 +12,7 @@ import Layout from '../Layout';
 import { random } from '../../utils/fns';
 import NavBar from '../NavBar';
 import useYTubeRequest from '../../utils/hooks/useYTbe.js';
+import VideoDetailsView from '../VideoDetailsView/VideoDetailsView.component';
 
 function App() {
   useLayoutEffect(() => {
@@ -32,9 +33,18 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    var tag = document.createElement('script');
+    tag.id = 'iframe-demo';
+    tag.src = 'https://www.youtube.com/iframe_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  })
+
   const gotItemsFromSearch = {};
   const [valSearch, setValSearch] = useState("");
   const {videos, channels} = useYTubeRequest(valSearch);
+  const [currentVideo, setCurrentVideo] = useState({});
 
   return (
     <BrowserRouter>
@@ -43,7 +53,8 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/">
-              <HomePage videoResults={videos} channelResults={channels} />
+              {Object.keys(currentVideo).length == 0 && <HomePage videoResults={videos} channelResults={channels} setVideoSelected={setCurrentVideo} />}
+              {Object.keys(currentVideo).length > 0 && <VideoDetailsView video={currentVideo} /> }
             </Route>
             <Route exact path="/login">
               <LoginPage />
