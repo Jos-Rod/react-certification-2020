@@ -39,15 +39,20 @@ const VideoDetailsView = ({ video }) => {
         <>
             <div style={{marginTop: 80}}>
                 <div className="videoContainerParent">
-                    <div className="videoPlayerContainer">
-                        <iframe
-                                // 640 360
-                                src={videoSource}
-                        ></iframe>
-                    </div>
-                    <div style={{marginLeft: '10px', }}>
-                        <h3 style={{margin: '0px'}}>{displayTitle}</h3>
-                        <p style={{margin: '0px'}}>{displayDescription}</p>
+                    <div className="containerVideoAndInfo">
+                        <div className="grandContainerVideo">
+                            <div className="videoPlayerContainer">
+                                <iframe
+                                        // 640 360
+                                        style={{borderStyle: 'none'}}
+                                        src={videoSource}
+                                ></iframe>
+                            </div>
+                        </div>
+                        <div style={{marginLeft: '10px', }}>
+                            <h3 className="videoTitleStyle">{displayTitle}</h3>
+                            <p className="videoDescriptionStyle">{displayDescription}</p>
+                        </div>
                     </div>
                 </div>
             </div>

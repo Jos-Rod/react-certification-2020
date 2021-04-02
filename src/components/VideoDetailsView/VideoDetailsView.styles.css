@@ -11,7 +11,6 @@
     padding-top: 30px; 
     height: 0; 
     overflow: hidden;
-    background-color: aqua;
 }
 
 .videoPlayerContainer iframe {
@@ -21,3 +20,40 @@
     width: 100%;
     height: 100%;
   }
+
+.containerVideoAndInfo {
+    /* background-color: aqua; */
+    /* background-color: rgb(252, 222, 166); */
+    /* border-style: none none none solid;
+    box-sizing: content-box; */
+    border-radius: 30px 0px 0px 0px;
+    box-shadow: inset 30px 0px 0px 0px rgb(247, 215, 155);
+}
+
+.grandContainerVideo {
+    padding: 20px;
+    background-color: rgb(252, 199, 101);
+    border-radius: 20px;
+}
+
+.videoTitleStyle {
+    background: rgb(252, 199, 101);
+    display: inline-block;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    margin-top: 0px;
+    margin-left: 40px;
+    border-radius: 0 0 15px 15px;
+    color: white;
+}
+
+.videoDescriptionStyle {
+    margin-top: -5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 10px;
+    font-size: medium;
+    background-color: rgb(247, 215, 155);
+    border-radius: 15px 10px 20px 10px;
+}
