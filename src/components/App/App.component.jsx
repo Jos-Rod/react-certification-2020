@@ -17,6 +17,7 @@ import { getVideoId } from '../../utils/utils';
 import mock from '../mock/youtube-videos-mock.json';
 
 const videoSelected = mock.items[0];
+const allVideos = mock.items;
 
 function App() {
   useLayoutEffect(() => {
@@ -69,7 +70,7 @@ function App() {
             <Route exact path="/">
               {/* {Object.keys(currentVideo).length == 0 && <HomePage videoResults={videos} channelResults={channels} setVideoSelected={setCurrentVideo} />}
               {Object.keys(currentVideo).length > 0 && <VideoDetailsView video={currentVideo} /> } */}
-              <VideoDetailsView video={videoSelected} />
+              <VideoDetailsView video={videoSelected} relatedVideos={allVideos} setVideoSelected={setCurrentVideo} />
             </Route>
             <Route exact path="/login">
               <LoginPage />

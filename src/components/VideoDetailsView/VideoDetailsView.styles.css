@@ -5,6 +5,13 @@
     margin-bottom: 10px;
 }
 
+.relatedVideosParent {
+    width: 38%;
+    /* background-color: blueviolet; */
+    display: inline;
+    text-align: center;
+}
+
 .videoPlayerContainer {
     position: relative;
     padding-bottom: 56.25%; /*16:9*/

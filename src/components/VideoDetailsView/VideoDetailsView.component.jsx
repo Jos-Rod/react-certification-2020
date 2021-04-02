@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { getDescription, getTitle, getVideoId, getVideoSrc } from '../../utils/utils';
+import VideoCardList from '../VideoCardList';
 import './VideoDetailsView.styles.css';
 
-const VideoDetailsView = ({ video }) => {
+const VideoDetailsView = ({ video, relatedVideos, setVideoSelected }) => {
     const [displayTitle, setDisplayTitle] = useState("");
     const [displayDescription, setDisplayDescription] = useState("");
     const [videoSource, setVideoSource] = useState("");
 
     useEffect(() => {
         if (video) {
+            // set video info
             setDisplayTitle(getTitle(video));
             setDisplayDescription(getDescription(video));
             setVideoSource(`https://www.youtube.com/embed/${getVideoId(video)}?enablejsapi=1`);
-            console.log(video);
+            
+            // get related videos
+
         }
     }, [video]);
 
@@ -37,7 +41,7 @@ const VideoDetailsView = ({ video }) => {
 
     return (
         <>
-            <div style={{marginTop: 80}}>
+            <div style={{marginTop: 80, display: 'flex'}}>
                 <div className="videoContainerParent">
                     <div className="containerVideoAndInfo">
                         <div className="grandContainerVideo">
@@ -52,6 +56,17 @@ const VideoDetailsView = ({ video }) => {
                         <div style={{marginLeft: '10px', }}>
                             <h3 className="videoTitleStyle">{displayTitle}</h3>
                             <p className="videoDescriptionStyle">{displayDescription}</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="relatedVideosParent">
+                    <div style={{ margin: '10px' }}>
+                        <div>
+                            <h4 style={{ textAlign: 'left', marginLeft: '20pt' }}>Related videos</h4>
+                        </div>
+                        <div>
+                            {/* Related videos */}
+                            <VideoCardList videoList={relatedVideos} setVideoSelected={setVideoSelected} />
                         </div>
                     </div>
                 </div>
