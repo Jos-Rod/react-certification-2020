@@ -13,6 +13,10 @@ import { random } from '../../utils/fns';
 import NavBar from '../NavBar';
 import useYTubeRequest from '../../utils/hooks/useYTbe.js';
 import VideoDetailsView from '../VideoDetailsView/VideoDetailsView.component';
+import { getVideoId } from '../../utils/utils';
+import mock from '../mock/youtube-videos-mock.json';
+
+const videoSelected = mock.items[0];
 
 function App() {
   useLayoutEffect(() => {
@@ -43,8 +47,18 @@ function App() {
 
   const gotItemsFromSearch = {};
   const [valSearch, setValSearch] = useState("");
-  const {videos, channels} = useYTubeRequest(valSearch);
+  const [valSearchRelated, setValSearchRelated] = useState(null);
+  const {videos, channels} = useYTubeRequest(valSearch, "SEARCH_VIDEOS");
   const [currentVideo, setCurrentVideo] = useState({});
+  const {videosRelated, channelsRelated} = useYTubeRequest(valSearchRelated, "SEARCH_RELATED");
+
+  useEffect(() => {
+    if (Object.keys(currentVideo).length > 0) {
+      setValSearchRelated(getVideoId(currentVideo));
+    } else {
+      setValSearchRelated(null);
+    }
+  }, [currentVideo])
 
   return (
     <BrowserRouter>
@@ -53,8 +67,9 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/">
-              {Object.keys(currentVideo).length == 0 && <HomePage videoResults={videos} channelResults={channels} setVideoSelected={setCurrentVideo} />}
-              {Object.keys(currentVideo).length > 0 && <VideoDetailsView video={currentVideo} /> }
+              {/* {Object.keys(currentVideo).length == 0 && <HomePage videoResults={videos} channelResults={channels} setVideoSelected={setCurrentVideo} />}
+              {Object.keys(currentVideo).length > 0 && <VideoDetailsView video={currentVideo} /> } */}
+              <VideoDetailsView video={videoSelected} />
             </Route>
             <Route exact path="/login">
               <LoginPage />

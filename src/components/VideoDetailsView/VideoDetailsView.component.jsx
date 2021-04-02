@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { getTitle, getVideoId, getVideoSrc } from '../../utils/utils';
+import { getDescription, getTitle, getVideoId, getVideoSrc } from '../../utils/utils';
 import './VideoDetailsView.styles.css';
 
 const VideoDetailsView = ({ video }) => {
     const [displayTitle, setDisplayTitle] = useState("");
+    const [displayDescription, setDisplayDescription] = useState("");
     const [videoSource, setVideoSource] = useState("");
 
     useEffect(() => {
         if (video) {
             setDisplayTitle(getTitle(video));
+            setDisplayDescription(getDescription(video));
             setVideoSource(`https://www.youtube.com/embed/${getVideoId(video)}?enablejsapi=1`);
             console.log(video);
         }
@@ -43,8 +45,9 @@ const VideoDetailsView = ({ video }) => {
                                 src={videoSource}
                         ></iframe>
                     </div>
-                    <div style={{marginLeft: '10px'}}>
+                    <div style={{marginLeft: '10px', }}>
                         <h3 style={{margin: '0px'}}>{displayTitle}</h3>
+                        <p style={{margin: '0px'}}>{displayDescription}</p>
                     </div>
                 </div>
             </div>
