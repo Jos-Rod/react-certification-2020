@@ -34,7 +34,7 @@ const VideoCardList = ({ videoList, setVideoSelected, cardStyle }) => {
   return (
   <div className="videosList">
     {videosToRender.map((vid) => (
-      'thumbnails' in vid.snippet &&
+      'snippet' in vid &&
       <VideoCard
         video={vid}
         key={getVideoSrc(vid)} 

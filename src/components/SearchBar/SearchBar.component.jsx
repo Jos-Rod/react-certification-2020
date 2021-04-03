@@ -15,8 +15,8 @@ const SearchBar = (props) => {
 
     return (<>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-        <input className="niceInput" value={searchValue} onChange={handleInputChange} placeholder="Search..." />
-        <button className="buttonSearch" onClick={handlerClickSearch}>Search</button>
+            <input className="niceInput" value={searchValue} onChange={handleInputChange} placeholder="Search..." />
+            <button className="buttonSearch" onClick={handlerClickSearch}>Search</button>
       </div>
     </>)
 };

@@ -25,6 +25,7 @@ function useYTubeRequest(searchText, searchType) {
             fetch(myrequest).then((res) => res.json()).then((val) => {
                 setList(val);
                 console.log(`Results of search with: ${searchType}`);
+                console.log(val);
                 setJustSearched(true);
             }).catch((e) => {
                 console.log("Error while using youtube API");
@@ -35,7 +36,7 @@ function useYTubeRequest(searchText, searchType) {
         }
         
     }, [searchText]);
-    
+
     if (!justSearched || Object.keys(list).length == 0) {
         return { videos: [], channels: [] };
     }

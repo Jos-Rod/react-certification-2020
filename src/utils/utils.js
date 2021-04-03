@@ -17,3 +17,8 @@ export function getVideoId(video) {
   const aux = video.id.videoId;
   return aux != null ? aux : '';
 }
+
+export function getChannelId(video) {
+  const aux = video.id.channelId;
+  return aux != null ? aux : '';
+}
