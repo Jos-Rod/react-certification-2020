@@ -75,9 +75,9 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/">
-              {Object.keys(currentVideo).length == 0 && <HomePage videoResults={videos} channelResults={channels} setVideoSelected={setCurrentVideo} />}
-              {Object.keys(currentVideo).length > 0 &&  <VideoDetailsView video={currentVideo} relatedVideos={videosRelated.videos} setVideoSelected={setCurrentVideo} /> }
-               {/* <HomePage videoResults={allVideos} channelResults={[]} setVideoSelected={setCurrentVideo} /> */}
+              {/* {Object.keys(currentVideo).length == 0 && <HomePage videoResults={videos} channelResults={channels} setVideoSelected={setCurrentVideo} />}
+              {Object.keys(currentVideo).length > 0 &&  <VideoDetailsView video={currentVideo} relatedVideos={videosRelated.videos} setVideoSelected={setCurrentVideo} /> } */}
+               <HomePage videoResults={allVideos} channelResults={[]} setVideoSelected={setCurrentVideo} />
             </Route>
             <Route exact path="/login">
               <LoginPage />
