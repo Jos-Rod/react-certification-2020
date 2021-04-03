@@ -13,9 +13,7 @@ const NavBar = (props) => (
     <div className="navBar">
       <div style={{ marginLeft: '30px', display: 'flex', alignItems: 'center' }}>
         <GiHamburgerMenu />
-      </div>
-      <div>
-        <span />
+        <button onClick={props.homeAction} className="buttonHome">YouZline</button>
       </div>
       <SearchBar searchValue={props.handleValSearch} />
       <div className="rightActions" style={{ display: 'flex', alignItems: 'center' }}>

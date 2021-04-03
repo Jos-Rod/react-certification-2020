@@ -56,21 +56,28 @@ function App() {
   useEffect(() => {
     if (Object.keys(currentVideo).length > 0) {
       setValSearchRelated(getVideoId(currentVideo));
+      console.log("Current video");
+      console.log(currentVideo);
     } else {
       setValSearchRelated(null);
     }
   }, [currentVideo])
 
+  function goHome() {
+    setValSearchRelated('wizeline');
+    setCurrentVideo({});
+  }
+
   return (
     <BrowserRouter>
       <AuthProvider>
-        <NavBar handleValSearch={setValSearch} />
+        <NavBar handleValSearch={setValSearch} homeAction={goHome}/>
         <Layout>
           <Switch>
             <Route exact path="/">
               {Object.keys(currentVideo).length == 0 && <HomePage videoResults={videos} channelResults={channels} setVideoSelected={setCurrentVideo} />}
               {Object.keys(currentVideo).length > 0 &&  <VideoDetailsView video={currentVideo} relatedVideos={videosRelated.videos} setVideoSelected={setCurrentVideo} /> }
-              {/* <VideoDetailsView video={videoSelected} relatedVideos={allVideos} setVideoSelected={setCurrentVideo} /> */}
+               {/* <HomePage videoResults={allVideos} channelResults={[]} setVideoSelected={setCurrentVideo} /> */}
             </Route>
             <Route exact path="/login">
               <LoginPage />
