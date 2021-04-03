@@ -62,11 +62,11 @@ const VideoDetailsView = ({ video, relatedVideos, setVideoSelected }) => {
                 <div className="relatedVideosParent">
                     <div style={{ margin: '10px' }}>
                         <div>
-                            <h4 style={{ textAlign: 'left', marginLeft: '20pt' }}>Related videos</h4>
+                            <h4 style={{ textAlign: 'left', marginLeft: '20pt', marginBottom: '0px' }}>Related videos</h4>
                         </div>
                         <div>
                             {/* Related videos */}
-                            <VideoCardList videoList={relatedVideos} setVideoSelected={setVideoSelected} />
+                            <VideoCardList videoList={relatedVideos} setVideoSelected={setVideoSelected} cardStyle="horizontal" />
                         </div>
                     </div>
                 </div>

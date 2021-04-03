@@ -21,7 +21,7 @@ import { getVideoSrc, getTitle, getDescription } from '../../utils/utils.js';
 
 
 
-const VideoCardList = ({ videoList, setVideoSelected }) => {
+const VideoCardList = ({ videoList, setVideoSelected, cardStyle }) => {
   
   const [videosToRender, setVideosToRender] = useState([]);
 
@@ -37,6 +37,7 @@ const VideoCardList = ({ videoList, setVideoSelected }) => {
         video={vid}
         key={getVideoSrc(vid)} 
         setSelectedVideo={setVideoSelected}
+        cardStyle={cardStyle}
       />
     ))}
   </div>)

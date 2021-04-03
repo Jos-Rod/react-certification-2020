@@ -27,8 +27,78 @@
     margin-top: 0px;
 }
 
+.titleCardHorizontal {
+    font-size: small;
+    font-weight: 600;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
 .descriptionCard {
     margin-top: 0px;
     font-size: 14px;
     color: gray;
+}
+
+.descriptionCardHorizontal {
+    margin-top: 0px;
+    font-size: small;
+    color: gray;
+    text-overflow: ellipsis;
+    height: 3em;
+}
+
+.videoCardStyleHorizontal {
+    background-color: white;
+    width: 23rem;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition-duration: 0.05s;
+    display: flex;
+    height: 7rem;
+    max-height: 11rem;
+    box-shadow: 0 5px 3px 0 rgba(0, 0, 0 , .1);
+    align-items: center;
+}
+
+.videoCardStyleHorizontal:hover {
+    background-color: lightyellow;
+    margin: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0 , .1);
+}
+
+/* .thumbnail {
+    width: 100%;
+    height: 8rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 0px;
+    background-position: center;
+} */
+
+.thumbnailHorizontal {
+    width: 55%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 0px;
+    background-position: center;
+    display: inline-block;
+}
+
+/* .videoInfo {
+    margin: 9px;
+    text-align: left;
+} */
+
+.videoInfoHorizontal {
+    /* margin: 9px; */
+    text-align: left;
+    display: inline-block;
+    width: 45%;
+    padding: 5px;
+    height: 100%;
 }
