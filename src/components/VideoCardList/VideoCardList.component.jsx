@@ -26,13 +26,15 @@ const VideoCardList = ({ videoList, setVideoSelected, cardStyle }) => {
   const [videosToRender, setVideosToRender] = useState([]);
 
   useEffect(() => {
-    console.log("Video list updated");
-    setVideosToRender(videoList);
+    if (videoList) {
+      setVideosToRender(videoList);
+    }
   }, [videoList]);
   
   return (
   <div className="videosList">
     {videosToRender.map((vid) => (
+      'thumbnails' in vid.snippet &&
       <VideoCard
         video={vid}
         key={getVideoSrc(vid)} 

@@ -16,9 +16,13 @@ const VideoDetailsView = ({ video, relatedVideos, setVideoSelected }) => {
             setVideoSource(`https://www.youtube.com/embed/${getVideoId(video)}?enablejsapi=1`);
             
             // get related videos
-
         }
     }, [video]);
+
+    useEffect(() => {
+        console.log("actualizados");
+        console.log(relatedVideos);
+    }, [relatedVideos]);
 
     // var player;
     // function onYouTubeIframeAPIReady() {

@@ -51,7 +51,7 @@ function App() {
   const [valSearchRelated, setValSearchRelated] = useState(null);
   const {videos, channels} = useYTubeRequest(valSearch, "SEARCH_VIDEOS");
   const [currentVideo, setCurrentVideo] = useState({});
-  const {videosRelated, channelsRelated} = useYTubeRequest(valSearchRelated, "SEARCH_RELATED");
+  const videosRelated = useYTubeRequest(valSearchRelated, "SEARCH_RELATED");
 
   useEffect(() => {
     if (Object.keys(currentVideo).length > 0) {
@@ -68,9 +68,9 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/">
-              {/* {Object.keys(currentVideo).length == 0 && <HomePage videoResults={videos} channelResults={channels} setVideoSelected={setCurrentVideo} />}
-              {Object.keys(currentVideo).length > 0 && <VideoDetailsView video={currentVideo} /> } */}
-              <VideoDetailsView video={videoSelected} relatedVideos={allVideos} setVideoSelected={setCurrentVideo} />
+              {Object.keys(currentVideo).length == 0 && <HomePage videoResults={videos} channelResults={channels} setVideoSelected={setCurrentVideo} />}
+              {Object.keys(currentVideo).length > 0 &&  <VideoDetailsView video={currentVideo} relatedVideos={videosRelated.videos} setVideoSelected={setCurrentVideo} /> }
+              {/* <VideoDetailsView video={videoSelected} relatedVideos={allVideos} setVideoSelected={setCurrentVideo} /> */}
             </Route>
             <Route exact path="/login">
               <LoginPage />

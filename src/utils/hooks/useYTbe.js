@@ -9,7 +9,7 @@ function useYTubeRequest(searchText, searchType) {
     if (searchType == "SEARCH_VIDEOS") {
         searchTypeOnURL = `q=${searchText}`;
     } else if (searchType == "SEARCH_RELATED") {
-        searchTypeOnURL = `relatedToVideoId=${searchText}`
+        searchTypeOnURL = `relatedToVideoId=${searchText}&type=video`
     }
 
     var myHeaders = new Headers();
@@ -31,11 +31,11 @@ function useYTubeRequest(searchText, searchType) {
                 console.log(e);
             });
         } else {
-            console.log("No realizar busqueda");
+            console.log("Do not search");
         }
         
     }, [searchText]);
-    console.log(list);
+    
     if (!justSearched || Object.keys(list).length == 0) {
         return { videos: [], channels: [] };
     }
