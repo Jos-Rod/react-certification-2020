@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getDescription, getTitle, getVideoId, getVideoSrc } from '../../utils/utils';
+import { getDescription, getTitle, getVideoId } from '../../utils/utils';
 import VideoCardList from '../VideoCardList';
 import './VideoDetailsView.styles.css';
 
@@ -54,6 +54,7 @@ const VideoDetailsView = ({ video, relatedVideos, setVideoSelected }) => {
                                         // 640 360
                                         style={{borderStyle: 'none'}}
                                         src={videoSource}
+                                        title="This is the video"
                                 ></iframe>
                             </div>
                         </div>

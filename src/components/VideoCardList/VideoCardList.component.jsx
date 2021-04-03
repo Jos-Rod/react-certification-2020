@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './VideoCardList.styles.css';
 import VideoCard from '../VideoCard/VideoCard.component';
-import { getVideoSrc, getTitle, getDescription } from '../../utils/utils.js';
+import { getVideoSrc } from '../../utils/utils.js';
 
 // function clicked() {
 //   console.log("Empezando loading");

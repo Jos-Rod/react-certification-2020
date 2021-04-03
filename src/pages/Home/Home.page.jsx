@@ -4,9 +4,7 @@ import React from 'react'; // commented { useRef }
 // import { useAuth } from '../../providers/Auth';
 import './Home.styles.css';
 import VideoCardList from '../../components/VideoCardList';
-import ChannelCard from '../../components/ChannelCard';
 import ChannelCardList from '../../components/ChannelCardList';
-import videos from '../../components/mock/youtube-videos-mock.json';
 
 function HomePage({ videoResults, channelResults, setVideoSelected }) {
   // const history = useHistory();

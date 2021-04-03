@@ -5,8 +5,7 @@ import { getVideoSrc, getTitle } from '../../utils/utils.js';
 
 const ChannelCard = ({ channel }) => {
     console.log(channel);
-    console.log(`title: ${getTitle(channel)} | imagen: ${getVideoSrc(channel)}`)
-    const imageChannel = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/season-1-pictured-news-photo-1600677860.jpg?crop=1.00xw:0.668xh;0,0.0247xh&resize=640:*";
+    console.log(`title: ${getTitle(channel)} | imagen: ${getVideoSrc(channel)}`);
     return (
         <>
         <div className="divFatherChannelCard">
