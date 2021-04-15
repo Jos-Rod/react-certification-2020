@@ -4,10 +4,12 @@ import React from 'react';
 
 export const themes = {
     light: {
-      backgroundPrincipalColor: "#ffa500"
+      backgroundPrincipalColor: "#ffa500",
+      hoverBackgroundColor: "#ffffe0"
     },
     dark: {
-        backgroundPrincipalColor: "#7D725C"
+        backgroundPrincipalColor: "#7D725C",
+        hoverBackgroundColor: "#e8e7e3"
     }
   };
 

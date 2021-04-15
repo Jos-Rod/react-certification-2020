@@ -22,7 +22,7 @@ const VideoCard = ({ video, setSelectedVideo, cardStyle }) => {
         box-shadow: 0 5px 3px 0 rgba(0, 0, 0 , .1);
       };
       &:hover {
-        background-color: ${currentTheme.backgroundPrincipalColor};
+        background-color: ${currentTheme.hoverBackgroundColor};
         width: 15rem;
         margin: 10px;
         border-radius: 10px;

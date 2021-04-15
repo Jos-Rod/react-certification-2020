@@ -13,7 +13,7 @@
 }
 
 .videoCardStyle:hover {
-    background-color: lightyellow;
+    background-color: #ffffe0;
     width: 15rem;
     margin: 10px;
     border-radius: 10px;

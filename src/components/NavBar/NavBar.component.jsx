@@ -12,7 +12,7 @@ const NavBar = (props) =>  {
   const { currentTheme, updateCurrentTheme } = useContext(ThemeContext);
 
   function changeColorMode() {
-    updateCurrentTheme(themes.dark);
+    updateCurrentTheme(currentTheme == themes.dark ? themes.light : themes.dark);
   }
 
   const NavBarStyled = styled.div`
