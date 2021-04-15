@@ -27,7 +27,11 @@ const VideoCardList = ({ videoList, setVideoSelected, cardStyle }) => {
 
   useEffect(() => {
     if (videoList) {
-      setVideosToRender(videoList);
+      console.log("Render videos...");
+      console.log(videoList.length);
+      if (videoList.length > 0) {
+        setVideosToRender(videoList);
+      }
     }
   }, [videoList]);
   
