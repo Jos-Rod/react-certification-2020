@@ -2,12 +2,15 @@ import React, { useContext, useState } from 'react';
 import './SearchBar.styles.css';
 import styled from 'styled-components';
 import ThemeContext from '../../providers/Theme/Theme.provider';
+import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 
 
 const SearchBar = (props) => {
     const [searchValue, setSearchValue] = useState("");
 
     const { currentTheme, updateCurrentTheme } = useContext(ThemeContext);
+    const { setSearchedValue } = useSiteInfo();
+
     const SearchButtonStyle = styled.button`
     {
         border-radius: 1px 15px 15px 1px; /* Adds curve to border corners */
@@ -37,8 +40,9 @@ const SearchBar = (props) => {
   `;
 
     function handlerClickSearch() {
-        console.log(`Value to search: ${searchValue}`);
-        props.searchValue(searchValue);
+        // console.log(`Value to search: ${searchValue}`);
+        // props.searchValue(searchValue);
+        setSearchedValue(searchValue);
     }
 
     function handleInputChange(e) {

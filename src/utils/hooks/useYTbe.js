@@ -24,7 +24,7 @@ function useYTubeRequest(searchText, searchType) {
         if (searchText != null) {
             fetch(myrequest).then((res) => res.json()).then((val) => {
                 setList(val);
-                console.log(`Results of search with: ${searchType}`);
+                console.log(`Results of search with: ${searchType}, search: ${searchText}`);
                 console.log(val);
                 setJustSearched(true);
             }).catch((e) => {
