@@ -1,54 +1,45 @@
-.videoContainerParent {
+import styled from "styled-components";
+
+export const VideoContainerParent = styled.div`
     width: 65%;
     margin-left: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
     float: left;
     box-sizing: border-box;
-}
+`;
 
-.relatedVideosParent {
+export const RelatedVideosParent = styled.div`
     width: 28%;
-    /* background-color: blueviolet; */
     display: inline;
     text-align: center;
     float: left;
     box-sizing: border-box;
-}
+`;
 
-.videoPlayerContainer {
+export const VideoPlayerContainer = styled.div`
     position: relative;
     padding-bottom: 56.25%; /*16:9*/
     padding-top: 30px; 
     height: 0; 
     overflow: hidden;
-}
+`;
 
-.videoPlayerContainer iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
 
-.containerVideoAndInfo {
-    /* background-color: aqua; */
-    /* background-color: rgb(252, 222, 166); */
-    /* border-style: none none none solid;
-    box-sizing: content-box; */
+
+export const ContainerVideoAndInfo = styled.div`
     border-radius: 30px 0px 0px 20px;
-    box-shadow: inset 30px 0px 0px 0px rgb(247, 215, 155);
-}
+    box-shadow: inset 30px 0px 0px 0px ${props => props.theme.lightestPrincipalColor};
+`;
 
-.grandContainerVideo {
+export const GrandContainerVideo = styled.div`
     padding: 20px;
-    background-color: rgb(252, 199, 101);
+    background-color: ${props => props.theme.lightPrincipalColor};
     border-radius: 20px;
-}
+`;
 
-.videoTitleStyle {
-    background: rgb(252, 199, 101);
+export const VideoTitleStyle = styled.h3`
+    background: ${props => props.theme.lightPrincipalColor};
     display: inline-block;
     padding-left: 30px;
     padding-right: 30px;
@@ -57,14 +48,14 @@
     margin-left: 40px;
     border-radius: 0 0 15px 15px;
     color: white;
-}
+`;
 
-.videoDescriptionStyle {
+export const VideoDescriptionStyle = styled.p`
     margin-top: -5px;
     margin-left: 15px;
     margin-right: 15px;
     padding: 10px;
     font-size: medium;
-    background-color: rgb(247, 215, 155);
+    background-color: ${props => props.theme.lightestPrincipalColor};
     border-radius: 15px 10px 20px 10px;
-}
+`;

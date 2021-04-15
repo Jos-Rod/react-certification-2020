@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const VideoCardStyled = styled.div`
-    ${props => props.cardStyle != "horizontal" ? 
+    ${props => props.cardStyle !== "horizontal" ? 
     `{
       background-color: white;
       width: 15rem;
@@ -31,7 +31,7 @@ export const VideoCardStyled = styled.div`
     }
     &:hover {
       background-color: ${props => props.theme.hoverBackgroundColor};
-      width: ${props => props.cardStyle != "horizontal" ? '15rem' : null};
+      width: ${props => props.cardStyle !== "horizontal" ? '15rem' : null};
       margin: 10px;
       border-radius: 10px;
       overflow: hidden;
@@ -40,7 +40,7 @@ export const VideoCardStyled = styled.div`
   `;
 
 export const TitleCard = styled.p`{
-  ${props => props.cardStyle != "horizontal" ?
+  ${props => props.cardStyle !== "horizontal" ?
     `
     font-size: large;
     margin-bottom: 0px;
@@ -55,7 +55,7 @@ export const TitleCard = styled.p`{
 }`;
 
 export const DescripctionCard = styled.p`{
-  ${props => props.cardStyle != "horizontal" ? 
+  ${props => props.cardStyle !== "horizontal" ? 
   `  
     margin-top: 0px;
     font-size: 14px;
@@ -72,7 +72,7 @@ export const DescripctionCard = styled.p`{
 
 export const Thumbnail = styled.div`
   background-image: ${props => props.imgSource};
-  ${props => props.cardStyle != "horizontal" ?
+  ${props => props.cardStyle !== "horizontal" ?
   `
     width: 100%;
     height: 8rem;
@@ -93,7 +93,7 @@ export const Thumbnail = styled.div`
     `;
 
 export const VideoInfo = styled.div`{
-  ${props => props.cardStyle != "horizontal" ?
+  ${props => props.cardStyle !== "horizontal" ?
   `  
     margin: 9px;
     text-align: left;

@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { getDescription, getTitle, getVideoId } from '../../utils/utils';
 import VideoCardList from '../VideoCardList';
-import './VideoDetailsView.styles.css';
+import './VideoDetailsView-styles.js';
+import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
+import { GrandContainerVideo, VideoContainerParent, ContainerVideoAndInfo, VideoPlayerContainer, RelatedVideosParent, VideoTitleStyle, VideoDescriptionStyle } from './VideoDetailsView-styles.js';
 
 const VideoDetailsView = ({ video, relatedVideos, setVideoSelected }) => {
     const [displayTitle, setDisplayTitle] = useState("");
     const [displayDescription, setDisplayDescription] = useState("");
     const [videoSource, setVideoSource] = useState("");
+
+    const { currentTheme, updateCurrentTheme } = useContext(ThemeContext);
 
     useEffect(() => {
         if (video) {
@@ -24,47 +28,28 @@ const VideoDetailsView = ({ video, relatedVideos, setVideoSelected }) => {
         console.log(relatedVideos);
     }, [relatedVideos]);
 
-    // var player;
-    // function onYouTubeIframeAPIReady() {
-    //     // eslint-disable-next-line no-use-before-define
-    //     player = new YT.Player('existing-iframe-example', {
-    //         events: {
-    //         'onReady': onPlayerReady,
-    //         'onStateChange': onPlayerStateChange
-    //         }
-    //     });
-    // }
-
-    // function onPlayerReady(e) {
-    //     console.log("Video loaded");
-    // }
-
-    // function onReadyAction(e) {
-    //     console.log("on readiy action");
-    // }
-
     return (
         <>
             <div style={{marginTop: 80, display: 'flex'}}>
-                <div className="videoContainerParent">
-                    <div className="containerVideoAndInfo">
-                        <div className="grandContainerVideo">
-                            <div className="videoPlayerContainer">
+                <VideoContainerParent>
+                    <ContainerVideoAndInfo theme={currentTheme} >
+                        <GrandContainerVideo theme={currentTheme} >
+                            <VideoPlayerContainer>
                                 <iframe
                                         // 640 360
-                                        style={{borderStyle: 'none'}}
+                                        style={{borderStyle: 'none', position:'absolute', top: '0', left: '0', width: '100%', height: '100%'}}
                                         src={videoSource}
                                         title="This is the video"
                                 ></iframe>
-                            </div>
-                        </div>
+                            </VideoPlayerContainer>
+                        </GrandContainerVideo>
                         <div style={{marginLeft: '10px', }}>
-                            <h3 className="videoTitleStyle">{displayTitle}</h3>
-                            <p className="videoDescriptionStyle">{displayDescription}</p>
+                            <VideoTitleStyle theme={currentTheme} className="videoTitleStyle">{displayTitle}</VideoTitleStyle>
+                            <VideoDescriptionStyle theme={currentTheme} className="videoDescriptionStyle">{displayDescription}</VideoDescriptionStyle>
                         </div>
-                    </div>
-                </div>
-                <div className="relatedVideosParent">
+                    </ContainerVideoAndInfo>
+                </VideoContainerParent>
+                <RelatedVideosParent >
                     <div style={{ margin: '10px' }}>
                         <div>
                             <h4 style={{ textAlign: 'left', marginLeft: '20pt', marginBottom: '0px' }}>Related videos</h4>
@@ -74,7 +59,7 @@ const VideoDetailsView = ({ video, relatedVideos, setVideoSelected }) => {
                             <VideoCardList videoList={relatedVideos} setVideoSelected={setVideoSelected} cardStyle="horizontal" />
                         </div>
                     </div>
-                </div>
+                </RelatedVideosParent>
             </div>
         </>
     );
