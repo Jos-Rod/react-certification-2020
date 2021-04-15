@@ -1,0 +1,61 @@
+import styled from "styled-components";
+
+export const VideoContainerParent = styled.div`
+    width: 65%;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: left;
+    box-sizing: border-box;
+`;
+
+export const RelatedVideosParent = styled.div`
+    width: 28%;
+    display: inline;
+    text-align: center;
+    float: left;
+    box-sizing: border-box;
+`;
+
+export const VideoPlayerContainer = styled.div`
+    position: relative;
+    padding-bottom: 56.25%; /*16:9*/
+    padding-top: 30px; 
+    height: 0; 
+    overflow: hidden;
+`;
+
+
+
+export const ContainerVideoAndInfo = styled.div`
+    border-radius: 30px 0px 0px 20px;
+    box-shadow: inset 30px 0px 0px 0px ${props => props.theme.lightestPrincipalColor};
+`;
+
+export const GrandContainerVideo = styled.div`
+    padding: 20px;
+    background-color: ${props => props.theme.lightPrincipalColor};
+    border-radius: 20px;
+`;
+
+export const VideoTitleStyle = styled.h3`
+    background: ${props => props.theme.lightPrincipalColor};
+    display: inline-block;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    margin-top: 0px;
+    margin-left: 40px;
+    border-radius: 0 0 15px 15px;
+    color: white;
+`;
+
+export const VideoDescriptionStyle = styled.p`
+    margin-top: -5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 10px;
+    font-size: medium;
+    background-color: ${props => props.theme.lightestPrincipalColor};
+    border-radius: 15px 10px 20px 10px;
+`;

@@ -4,8 +4,9 @@ import React from 'react'; // commented { useRef }
 // import { useAuth } from '../../providers/Auth';
 import './Home.styles.css';
 import VideoCardList from '../../components/VideoCardList';
+import ChannelCardList from '../../components/ChannelCardList';
 
-function HomePage() {
+function HomePage({ videoResults, channelResults, setVideoSelected }) {
   // const history = useHistory();
   // const sectionRef = useRef(null);
   // const { authenticated, logout } = useAuth();
@@ -16,11 +17,20 @@ function HomePage() {
   //   history.push('/');
   // }
 
+  const cardListWidth = channelResults.length > 0 ? '70%' : '100%';
+
   return (
-    <div style={{ marginTop: 80 }}>
+    <div style={{ marginTop: 100 }}>
       <section>
-        <div>
-          <VideoCardList />
+        <div style={{ display: 'flex' }}>
+          
+          <div style={{ display:'inline', textAlign: 'center', width: cardListWidth }}>
+            <VideoCardList videoList={videoResults} setVideoSelected={setVideoSelected} />
+          </div>
+          { channelResults.length > 0 &&
+          <div style={{ display:'inline', width: '30%' }}>
+            <ChannelCardList channelList={channelResults} itemsAlignTo="left" /> 
+          </div>}
         </div>
       </section>
       {/* <section className="homepage" ref={sectionRef}>

@@ -1,36 +1,42 @@
-import React from 'react';
-import './NavBar.styles.css';
-import { FaUserAlt, FaRegMoon } from 'react-icons/fa'; // FaHamburger, FaMoon
+import React, { useContext } from 'react';
+import { FaUserAlt, FaRegMoon, FaSun } from 'react-icons/fa'; // FaHamburger, FaMoon
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IconContext } from 'react-icons';
+import SearchBar from '../SearchBar';
+import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
+import { ButtonHome, NavBarStyled, ButtonHoverItem } from './NavBar-styling';
 
+const NavBar = (props) =>  {
 
-const NavBar = () => (
-  <IconContext.Provider
-    value={{ style: { fontSize: '36px', color: 'rgb(255, 255, 224)' } }}
-  >
-    <div className="navBar">
-      <div style={{ marginLeft: '30px', display: 'flex', alignItems: 'center' }}>
-        <GiHamburgerMenu />
-      </div>
-      <div>
-        <span />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <input className="niceInput" placeholder="Search..." />
-        <button className="buttonSearch">Search</button>
-      </div>
-      <div className="rightActions" style={{ display: 'flex', alignItems: 'center' }}>
-        <button className="buttonUser">
-          <FaRegMoon />
-        </button>
-        <p style={{ display: 'inline', marginLeft: 13, marginRight: 13 }}>Dark mode</p>
-        <button className="buttonUser">
-          <FaUserAlt />
-        </button>
-      </div>
-    </div>
-  </IconContext.Provider>
-);
+  const { currentTheme, updateCurrentTheme } = useContext(ThemeContext);
+
+  function changeColorMode() {
+    updateCurrentTheme(currentTheme == themes.dark ? themes.light : themes.dark);
+  }
+
+   return  (
+      <IconContext.Provider
+        value={{ style: { fontSize: '36px', color: 'rgb(255, 255, 224)' } }}
+      >
+        <NavBarStyled theme={currentTheme}>
+          <div style={{ marginLeft: '30px', display: 'flex', alignItems: 'center' }}>
+            <GiHamburgerMenu />
+            <ButtonHome theme={currentTheme} onClick={props.homeAction} >YouZline</ButtonHome>
+          </div>
+          <SearchBar searchValue={props.handleValSearch} />
+          <div style={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>
+            {/* Button for changing color mode */}
+            <ButtonHoverItem theme={currentTheme} className="buttonUser" onClick={changeColorMode}>
+              {currentTheme == themes.light ? <FaRegMoon /> : <FaSun/> }
+            </ButtonHoverItem>
+            <ButtonHoverItem theme={currentTheme} className="buttonUser">
+              <FaUserAlt />
+            </ButtonHoverItem>
+          </div>
+        </NavBarStyled>
+      </IconContext.Provider>
+  );
+
+  };
 
 export default NavBar;
