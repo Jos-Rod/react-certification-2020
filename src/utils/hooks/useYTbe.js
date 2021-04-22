@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { API_KEY, BASE_URL_YT_SEARCH } from '../constants';
 
 function useYTubeRequest(searchText, searchType) {
@@ -6,9 +6,9 @@ function useYTubeRequest(searchText, searchType) {
     const [justSearched, setJustSearched] = useState(false);
 
     let searchTypeOnURL;
-    if (searchType == "SEARCH_VIDEOS") {
+    if (searchType === "SEARCH_VIDEOS") {
         searchTypeOnURL = `q=${searchText}`;
-    } else if (searchType == "SEARCH_RELATED") {
+    } else if (searchType === "SEARCH_RELATED") {
         searchTypeOnURL = `relatedToVideoId=${searchText}&type=video`
     }
 
@@ -24,8 +24,6 @@ function useYTubeRequest(searchText, searchType) {
         if (searchText != null) {
             fetch(myrequest).then((res) => res.json()).then((val) => {
                 setList(val);
-                console.log(`Results of search with: ${searchType}, search: ${searchText}`);
-                console.log(val);
                 setJustSearched(true);
             }).catch((e) => {
                 console.log("Error while using youtube API");

@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useReducer, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AuthProvider from '../../providers/Auth';
@@ -68,15 +68,22 @@ function App() {
     setValSearchRelated('wizeline');
     setCurrentVideo({});
     setValSearch("");
+    setSelectedVideo(null);
   }
 
   const [currentTheme, setCurrentTheme] = useState(themes.light);
 
-  const { valueSearched } = useSiteInfo();
+  const { valueSearched, selectedVideo, setSelectedVideo } = useSiteInfo();
 
   useEffect(() => {
     setValSearch(valueSearched);
   }, [valueSearched]);
+
+  useEffect(() => {
+    if (selectedVideo) {
+      setCurrentVideo(selectedVideo);
+    }
+  }, [selectedVideo]);
 
   return (
     <BrowserRouter>

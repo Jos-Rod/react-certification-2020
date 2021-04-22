@@ -8,7 +8,7 @@ import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider'
 const SearchBar = (props) => {
     const [searchValue, setSearchValue] = useState("");
 
-    const { currentTheme, updateCurrentTheme } = useContext(ThemeContext);
+    const { currentTheme } = useContext(ThemeContext);
     const { setSearchedValue } = useSiteInfo();
 
     const SearchButtonStyle = styled.button`

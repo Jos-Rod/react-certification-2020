@@ -18,13 +18,11 @@ function reducer(state, action) {
             console.log("Action on reducer");
             console.log(action);
             return {...state, valueSearched: action.value}
-        break;
         case actions.UPDATE_RELATED_VIDEOS:
             // setValSearchRelated(action.valueToSearch);
         break;
         case actions.SELECT_VIDEO:
-            // setCurrentVideo(action.video);
-        break;
+            return {...state, selectedVideo: action.value}
         default:
         break;
     }
@@ -48,6 +46,9 @@ function SiteInfoProvider({children}) {
         selectedVideo: state.selectedVideo,
         setSearchedValue: value => {
             dispatch({ type: actions.UPDATE_SEARCHED_VALUE, value });
+        },
+        setSelectedVideo: value => {
+            dispatch({ type: actions.SELECT_VIDEO, value });
         }
     };
 

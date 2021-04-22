@@ -3,10 +3,13 @@ import { getDescription, getTitle, getVideoSrc } from '../../utils/utils';
 import './VideoCard-styling.js';
 import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
 import { DescripctionCard, Thumbnail, TitleCard, VideoInfo, VideoCardStyled } from './VideoCard-styling.js';
+import SiteInfoProvider, { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 
-const VideoCard = ({ video, setSelectedVideo, cardStyle }) => {
+const VideoCard = ({ video, cardStyle }) => {
 
   const { currentTheme, updateCurrentTheme } = useContext(ThemeContext);
+
+  const { setSelectedVideo } = useSiteInfo();
 
   console.log("Rendering");
 

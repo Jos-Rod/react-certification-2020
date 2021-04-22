@@ -11,7 +11,7 @@ const NavBar = (props) =>  {
   const { currentTheme, updateCurrentTheme } = useContext(ThemeContext);
 
   function changeColorMode() {
-    updateCurrentTheme(currentTheme == themes.dark ? themes.light : themes.dark);
+    updateCurrentTheme(currentTheme === themes.dark ? themes.light : themes.dark);
   }
 
    return  (
@@ -27,7 +27,7 @@ const NavBar = (props) =>  {
           <div style={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>
             {/* Button for changing color mode */}
             <ButtonHoverItem theme={currentTheme} className="buttonUser" onClick={changeColorMode}>
-              {currentTheme == themes.light ? <FaRegMoon /> : <FaSun/> }
+              {currentTheme === themes.light ? <FaRegMoon /> : <FaSun/> }
             </ButtonHoverItem>
             <ButtonHoverItem theme={currentTheme} className="buttonUser">
               <FaUserAlt />
