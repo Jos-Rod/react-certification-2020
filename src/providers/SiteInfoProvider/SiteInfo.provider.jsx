@@ -3,7 +3,7 @@ import React, { useReducer, useContext } from 'react';
 
 const inicialState = {
     valueSearched: "",
-    selectedVideo: null
+    selectedVideo: {}
   }
 
 const actions = {
@@ -15,12 +15,7 @@ const actions = {
 function reducer(state, action) {
     switch (action.type) {
         case actions.UPDATE_SEARCHED_VALUE:
-            console.log("Action on reducer");
-            console.log(action);
             return {...state, valueSearched: action.value}
-        case actions.UPDATE_RELATED_VIDEOS:
-            // setValSearchRelated(action.valueToSearch);
-        break;
         case actions.SELECT_VIDEO:
             return {...state, selectedVideo: action.value}
         default:

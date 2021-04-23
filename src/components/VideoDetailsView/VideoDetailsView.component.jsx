@@ -4,29 +4,28 @@ import VideoCardList from '../VideoCardList';
 import './VideoDetailsView-styles.js';
 import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
 import { GrandContainerVideo, VideoContainerParent, ContainerVideoAndInfo, VideoPlayerContainer, RelatedVideosParent, VideoTitleStyle, VideoDescriptionStyle } from './VideoDetailsView-styles.js';
+import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
+import useYTubeRequest from '../../utils/hooks/useYTbe.js';
 
-const VideoDetailsView = ({ video, relatedVideos, setVideoSelected }) => {
+const VideoDetailsView = () => {
+    const { selectedVideo } = useSiteInfo();
     const [displayTitle, setDisplayTitle] = useState("");
     const [displayDescription, setDisplayDescription] = useState("");
     const [videoSource, setVideoSource] = useState("");
+    const videosRelated = useYTubeRequest(Object.keys(selectedVideo).length > 0 ? getVideoId(selectedVideo) : "wizeline", "SEARCH_RELATED");
 
-    const { currentTheme, updateCurrentTheme } = useContext(ThemeContext);
+    const { currentTheme } = useContext(ThemeContext);
 
     useEffect(() => {
-        if (video) {
+        if (Object.keys(selectedVideo).length > 0) {
             // set video info
-            setDisplayTitle(getTitle(video));
-            setDisplayDescription(getDescription(video));
-            setVideoSource(`https://www.youtube.com/embed/${getVideoId(video)}?enablejsapi=1`);
+            setDisplayTitle(getTitle(selectedVideo));
+            setDisplayDescription(getDescription(selectedVideo));
+            setVideoSource(`https://www.youtube.com/embed/${getVideoId(selectedVideo)}?enablejsapi=1`);
             
             // get related videos
         }
-    }, [video]);
-
-    useEffect(() => {
-        console.log("actualizados");
-        console.log(relatedVideos);
-    }, [relatedVideos]);
+    }, [selectedVideo]);
 
     return (
         <>
@@ -56,7 +55,7 @@ const VideoDetailsView = ({ video, relatedVideos, setVideoSelected }) => {
                         </div>
                         <div>
                             {/* Related videos */}
-                            <VideoCardList videoList={relatedVideos} setVideoSelected={setVideoSelected} cardStyle="horizontal" />
+                            { videosRelated.videos.length > 0 ? <VideoCardList videoList={videosRelated.videos} cardStyle="horizontal" /> : null }
                         </div>
                     </div>
                 </RelatedVideosParent>

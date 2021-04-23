@@ -48,42 +48,21 @@ function App() {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   })
 
-  const [valSearch, setValSearch] = useState("");
-  const [valSearchRelated, setValSearchRelated] = useState(null);
-  const {videos, channels} = useYTubeRequest(valSearch, "SEARCH_VIDEOS");
-  const [currentVideo, setCurrentVideo] = useState({});
-  const videosRelated = useYTubeRequest(valSearchRelated, "SEARCH_RELATED");
+  const { valueSearched, selectedVideo, setSelectedVideo, setRelatedVideos } = useSiteInfo();
 
-  useEffect(() => {
-    if (Object.keys(currentVideo).length > 0) {
-      setValSearchRelated(getVideoId(currentVideo));
-      console.log("Current video");
-      console.log(currentVideo);
-    } else {
-      setValSearchRelated(null);
-    }
-  }, [currentVideo])
+  const [valSearch, setValSearch] = useState("");
+  const {videos, channels} = useYTubeRequest(valSearch, "SEARCH_VIDEOS");
 
   function goHome() {
-    setValSearchRelated('wizeline');
-    setCurrentVideo({});
     setValSearch("");
-    setSelectedVideo(null);
+    setSelectedVideo({});
   }
 
   const [currentTheme, setCurrentTheme] = useState(themes.light);
 
-  const { valueSearched, selectedVideo, setSelectedVideo } = useSiteInfo();
-
   useEffect(() => {
     setValSearch(valueSearched);
   }, [valueSearched]);
-
-  useEffect(() => {
-    if (selectedVideo) {
-      setCurrentVideo(selectedVideo);
-    }
-  }, [selectedVideo]);
 
   return (
     <BrowserRouter>
@@ -93,8 +72,8 @@ function App() {
             <Layout>
               <Switch>
                 <Route exact path="/">
-                  {Object.keys(currentVideo).length === 0 && <HomePage videoResults={videos} channelResults={channels} />}
-                  {Object.keys(currentVideo).length > 0 &&  <VideoDetailsView video={currentVideo} relatedVideos={videosRelated.videos} /> }
+                  {Object.keys(selectedVideo).length === 0 && <HomePage videoResults={videos} channelResults={channels} />}
+                  {Object.keys(selectedVideo).length > 0 &&  <VideoDetailsView /> }
                   {/* <HomePage videoResults={allVideos} channelResults={[]} setVideoSelected={setCurrentVideo} /> */}
                 </Route>
                 <Route exact path="/login">
