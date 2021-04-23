@@ -1,19 +1,18 @@
 import styled from "styled-components";
 
-export const VideoContainerParent = styled.div`
+export const VideoContainerParent = styled.div`    
+    float: left;
     width: 65%;
     margin-left: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
-    float: left;
     box-sizing: border-box;
 `;
 
 export const RelatedVideosParent = styled.div`
-    width: 28%;
-    display: inline;
-    text-align: center;
     float: left;
+    width: 35%;
+    text-align: center;
     box-sizing: border-box;
 `;
 
@@ -30,12 +29,14 @@ export const VideoPlayerContainer = styled.div`
 export const ContainerVideoAndInfo = styled.div`
     border-radius: 30px 0px 0px 20px;
     box-shadow: inset 30px 0px 0px 0px ${props => props.theme.lightestPrincipalColor};
+    width: 100%;
 `;
 
 export const GrandContainerVideo = styled.div`
     padding: 20px;
     background-color: ${props => props.theme.lightPrincipalColor};
     border-radius: 20px;
+    width: 100%;
 `;
 
 export const VideoTitleStyle = styled.h3`

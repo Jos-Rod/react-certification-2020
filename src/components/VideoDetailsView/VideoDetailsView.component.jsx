@@ -29,7 +29,7 @@ const VideoDetailsView = () => {
 
     return (
         <>
-            <div style={{marginTop: 80, display: 'flex'}}>
+            <div style={{marginTop: 80}}>
                 <VideoContainerParent>
                     <ContainerVideoAndInfo theme={currentTheme} >
                         <GrandContainerVideo theme={currentTheme} >
