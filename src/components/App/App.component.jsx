@@ -68,7 +68,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
           <ThemeContext.Provider value={{currentTheme: currentTheme, updateCurrentTheme: setCurrentTheme}}>
-            <NavBar handleValSearch={setValSearch} homeAction={goHome}/>
+            <NavBar homeAction={goHome}/>
             <Layout>
               <Switch>
                 <Route exact path="/">

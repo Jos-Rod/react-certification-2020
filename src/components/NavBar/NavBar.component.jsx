@@ -23,7 +23,7 @@ const NavBar = (props) =>  {
             <GiHamburgerMenu />
             <ButtonHome theme={currentTheme} onClick={props.homeAction} >YouZline</ButtonHome>
           </div>
-          <SearchBar searchValue={props.handleValSearch} />
+          <SearchBar />
           <div style={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>
             {/* Button for changing color mode */}
             <ButtonHoverItem theme={currentTheme} className="buttonUser" onClick={changeColorMode}>

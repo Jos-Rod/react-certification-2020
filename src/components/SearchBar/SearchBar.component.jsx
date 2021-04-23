@@ -5,7 +5,7 @@ import ThemeContext from '../../providers/Theme/Theme.provider';
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 
 
-const SearchBar = (props) => {
+const SearchBar = () => {
     const [searchValue, setSearchValue] = useState("");
 
     const { currentTheme } = useContext(ThemeContext);
