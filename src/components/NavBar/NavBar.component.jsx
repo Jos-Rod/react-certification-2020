@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FaUserAlt, FaRegMoon, FaSun } from 'react-icons/fa'; // FaHamburger, FaMoon
+import { FaUserAlt, FaRegMoon, FaSun, FaUserAltSlash } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { IconContext } from 'react-icons';
 import SearchBar from '../SearchBar';
@@ -7,11 +7,13 @@ import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
 import { ButtonHome, NavBarStyled, ButtonHoverItem } from './NavBar-styling';
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 import ModalLogin from '../ModalLogin/ModalLogin.component';
+import { useAuth } from '../../providers/Auth/Auth.provider';
 
 const NavBar = (props) =>  {
 
   const { currentTheme, updateCurrentTheme } = useContext(ThemeContext);
   const { showingModalLogin, showOrHideModalLogin } = useSiteInfo();
+  const { authenticated } = useAuth();
 
   function changeColorMode() {
     updateCurrentTheme(currentTheme === themes.dark ? themes.light : themes.dark);
@@ -42,7 +44,8 @@ const NavBar = (props) =>  {
               {currentTheme === themes.light ? <FaRegMoon className="ASDF" /> : <FaSun/> }
             </ButtonHoverItem>
             <ButtonHoverItem theme={currentTheme} className="buttonUser" onClick={handleClickLoginButton}>
-              <FaUserAlt />
+              
+              { !authenticated ? <FaUserAltSlash/> : <FaUserAlt /> }
             </ButtonHoverItem>
           </div>
         </NavBarStyled>

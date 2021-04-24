@@ -13,7 +13,7 @@ const ModalLogin = ({ theme }) =>  {
     const [errorLogin, setErrorLogin] = useState(false);
 
     const { showOrHideModalLogin } = useSiteInfo();
-    const { login, getCurrentUser, logout } = useAuth();
+    const { login, logout, authenticated } = useAuth();
 
     document.createElement('div');
 
@@ -24,7 +24,13 @@ const ModalLogin = ({ theme }) =>  {
             setErrorLogin(false);
             // store user on local storage
             login(res);
-            
+            // empty fields
+            setEmail('');
+            setPassword('');
+            // close modal
+            showOrHideModalLogin();
+            console.log("Now the login is");
+            console.log(authenticated);
         }).catch(err => {
             setErrorLogin(true);
             logout();
