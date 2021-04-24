@@ -51,7 +51,7 @@ const SearchBar = () => {
 
     return (<>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-            <input className="niceInput" value={searchValue} onChange={handleInputChange} placeholder="Search..." />
+            <input className="niceInput" aria-label="searchInput" value={searchValue} onChange={handleInputChange} placeholder="Search..." />
             <SearchButtonStyle onClick={handlerClickSearch}>
                 Search
             </SearchButtonStyle>

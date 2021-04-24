@@ -26,8 +26,8 @@ const NavBar = (props) =>  {
           <SearchBar />
           <div style={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>
             {/* Button for changing color mode */}
-            <ButtonHoverItem theme={currentTheme} className="buttonUser" onClick={changeColorMode}>
-              {currentTheme === themes.light ? <FaRegMoon /> : <FaSun/> }
+            <ButtonHoverItem theme={currentTheme} id="buttonDarkMode" onClick={changeColorMode}>
+              {currentTheme === themes.light ? <FaRegMoon className="ASDF" /> : <FaSun/> }
             </ButtonHoverItem>
             <ButtonHoverItem theme={currentTheme} className="buttonUser">
               <FaUserAlt />
