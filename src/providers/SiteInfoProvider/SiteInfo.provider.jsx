@@ -4,7 +4,7 @@ import React, { useReducer, useContext } from 'react';
 const inicialState = {
     valueSearched: "",
     selectedVideo: {},
-    showingModalLogin: false
+    showingModalLogin: false,
   }
 
 const actions = {
