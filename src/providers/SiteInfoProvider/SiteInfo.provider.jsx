@@ -3,13 +3,15 @@ import React, { useReducer, useContext } from 'react';
 
 const inicialState = {
     valueSearched: "",
-    selectedVideo: {}
+    selectedVideo: {},
+    showingModalLogin: false
   }
 
 const actions = {
     UPDATE_SEARCHED_VALUE: "UPDATE_SEARCHED_VALUE",
     UPDATE_RELATED_VIDEOS: "UPDATE_RELATED_VIDEOS",
-    SELECT_VIDEO: "SELECT_VIDEO"
+    SELECT_VIDEO: "SELECT_VIDEO",
+    SHOW_HIDE_MODAL_LOGIN: "SHOW_HIDE_MODAL_LOGIN"
 }
 
 function reducer(state, action) {
@@ -18,6 +20,9 @@ function reducer(state, action) {
             return {...state, valueSearched: action.value}
         case actions.SELECT_VIDEO:
             return {...state, selectedVideo: action.value}
+        case actions.SHOW_HIDE_MODAL_LOGIN:
+            console.log(`On reducer: ${action.value}`);
+            return {...state, showingModalLogin: !state.showingModalLogin }
         default:
         break;
     }
@@ -39,11 +44,15 @@ function SiteInfoProvider({children}) {
     const value = {
         valueSearched: state.valueSearched,
         selectedVideo: state.selectedVideo,
+        showingModalLogin: state.showingModalLogin,
         setSearchedValue: value => {
             dispatch({ type: actions.UPDATE_SEARCHED_VALUE, value });
         },
         setSelectedVideo: value => {
             dispatch({ type: actions.SELECT_VIDEO, value });
+        },
+        showOrHideModalLogin: value => {
+            dispatch({ type: actions.SHOW_HIDE_MODAL_LOGIN, value });
         }
     };
 

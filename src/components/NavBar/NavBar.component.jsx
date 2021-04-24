@@ -5,23 +5,35 @@ import { IconContext } from 'react-icons';
 import SearchBar from '../SearchBar';
 import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
 import { ButtonHome, NavBarStyled, ButtonHoverItem } from './NavBar-styling';
+import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
+import ModalLogin from '../ModalLogin/ModalLogin.component';
 
 const NavBar = (props) =>  {
 
   const { currentTheme, updateCurrentTheme } = useContext(ThemeContext);
+  const { showingModalLogin, showOrHideModalLogin } = useSiteInfo();
 
   function changeColorMode() {
     updateCurrentTheme(currentTheme === themes.dark ? themes.light : themes.dark);
+  }
+
+  function handleClickLoginButton() {
+    showOrHideModalLogin();
   }
 
    return  (
       <IconContext.Provider
         value={{ style: { fontSize: '36px', color: 'rgb(255, 255, 224)' } }}
       >
+        { showingModalLogin ? 
+        <ModalLogin theme={currentTheme}>
+        </ModalLogin> : null}
+        {/* <ModalLogin theme={currentTheme}>
+        </ModalLogin> */}
         <NavBarStyled theme={currentTheme}>
           <div style={{ marginLeft: '30px', display: 'flex', alignItems: 'center' }}>
             <GiHamburgerMenu />
-            <ButtonHome theme={currentTheme} onClick={props.homeAction} >YouZline</ButtonHome>
+            <ButtonHome style={{ marginLeft:"30px" }} theme={currentTheme} onClick={props.homeAction} >YouZline</ButtonHome>
           </div>
           <SearchBar />
           <div style={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>
@@ -29,7 +41,7 @@ const NavBar = (props) =>  {
             <ButtonHoverItem theme={currentTheme} id="buttonDarkMode" onClick={changeColorMode}>
               {currentTheme === themes.light ? <FaRegMoon className="ASDF" /> : <FaSun/> }
             </ButtonHoverItem>
-            <ButtonHoverItem theme={currentTheme} className="buttonUser">
+            <ButtonHoverItem theme={currentTheme} className="buttonUser" onClick={handleClickLoginButton}>
               <FaUserAlt />
             </ButtonHoverItem>
           </div>

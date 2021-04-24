@@ -12,7 +12,6 @@ const SearchBar = () => {
     const { setSearchedValue } = useSiteInfo();
 
     const SearchButtonStyle = styled.button`
-    {
         border-radius: 1px 15px 15px 1px; /* Adds curve to border corners */
         border: 0px;
         text-transform: uppercase; /* Make letters uppercase */
@@ -24,7 +23,7 @@ const SearchBar = () => {
         /* box-shadow: 0 8px 10px 0 rgba(0, 0, 0 , .1); */
         transition-duration: 0.4s;
         outline: none;
-    };
+    
     &:hover {
       border-radius: 1px 15px 15px 1px; /* Adds curve to border corners */
       border: 0px;
