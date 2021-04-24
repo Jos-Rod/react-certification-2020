@@ -1,7 +1,11 @@
 import React from 'react';
 import { NiceInputStyled, PLabelStyled } from './NiceInput.styling';
 
-const NiceInput = ({ value, handleOnChange, placeholder, withLabel, isPassword = false }) => {
+const NiceInput = ({ value, setValue, placeholder, withLabel, isPassword = false }) => {
+
+    function handleOnChange(e) {
+        setValue(e.target.value);
+    }
 
     return (
     <>
