@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+export const EverythingContainer = styled.div`
+    margin-top: 80px;
+    
+    @media screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+`;
+
 export const VideoContainerParent = styled.div`    
     float: left;
     width: 65%;
@@ -9,8 +19,9 @@ export const VideoContainerParent = styled.div`
     box-sizing: border-box;
 
     @media screen and (max-width: 600px) {
-    width: 100%;
-  }
+        width: 90%;
+        margin-left: 0px;
+    }
 `;
 
 export const RelatedVideosParent = styled.div`

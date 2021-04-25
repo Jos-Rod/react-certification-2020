@@ -3,7 +3,7 @@ import { getDescription, getTitle, getVideoId } from '../../utils/utils';
 import VideoCardList from '../VideoCardList';
 import './VideoDetailsView-styles.js';
 import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
-import { GrandContainerVideo, VideoContainerParent, ContainerVideoAndInfo, VideoPlayerContainer, RelatedVideosParent, VideoTitleStyle, VideoDescriptionStyle } from './VideoDetailsView-styles.js';
+import { GrandContainerVideo, VideoContainerParent, ContainerVideoAndInfo, EverythingContainer, VideoPlayerContainer, RelatedVideosParent, VideoTitleStyle, VideoDescriptionStyle } from './VideoDetailsView-styles.js';
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 import useYTubeRequest from '../../utils/hooks/useYTbe.js';
 
@@ -30,7 +30,7 @@ const VideoDetailsView = () => {
 
     return (
         <>
-            <div style={{marginTop: 80}}>
+            <EverythingContainer>
                 <VideoContainerParent>
                     <ContainerVideoAndInfo theme={currentTheme} >
                         <GrandContainerVideo theme={currentTheme} >
@@ -60,7 +60,7 @@ const VideoDetailsView = () => {
                         </div> : null}
                     </div>
                 </RelatedVideosParent>
-            </div>
+            </EverythingContainer>
         </>
     );
 

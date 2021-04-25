@@ -6,7 +6,7 @@ const videoSelectedMock = mock.items[1];
 
 const inicialState = {
     valueSearched: "",
-    selectedVideo: {},
+    selectedVideo: videoSelectedMock,
     showingModalLogin: false,
     withMock: true
   }

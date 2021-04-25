@@ -53,7 +53,7 @@ function App() {
   const { valueSearched, selectedVideo, setSelectedVideo, setSearchedValue } = useSiteInfo();
 
   const [valSearch, setValSearch] = useState("");
-  const {videos, channels} = useYTubeRequest(valSearch, "SEARCH_VIDEOS");
+  // const {videos, channels} = useYTubeRequest(valSearch, "SEARCH_VIDEOS");
 
   function goHome() {
     setValSearch("");
@@ -76,7 +76,7 @@ function App() {
             <Layout>
               <Switch>
                 <Route exact path="/">
-                  {Object.keys(selectedVideo).length === 0 && <HomePage videoResults={videos} channelResults={channels} />}
+                  {/* {Object.keys(selectedVideo).length === 0 && <HomePage videoResults={videos} channelResults={channels} />} */}
                   {Object.keys(selectedVideo).length > 0 &&  <VideoDetailsView /> }
                   {/* <HomePage videoResults={allVideos} channelResults={[]} setVideoSelected={setCurrentVideo} /> */}
                 </Route>

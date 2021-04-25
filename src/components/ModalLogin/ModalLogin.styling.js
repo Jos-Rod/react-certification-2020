@@ -20,5 +20,9 @@ export const ModalStructure = styled.div`
     /* min-height: 30vh; */
     border-radius: 20px;
     border-width: 10px;
-    border-color: ${props => props.theme.backgroundPrincipalColor}
+    border-color: ${props => props.theme.backgroundPrincipalColor};
+
+    @media screen and (max-width: 600px) {
+        width: 80%;
+    }
 `;
