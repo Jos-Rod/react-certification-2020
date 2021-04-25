@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
@@ -19,6 +19,7 @@ import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 import './App.styles.css';
 import SideBar from '../SideBar/SideBar.component';
+import Favourites from '../../pages/Favourites/Favourites.page';
 // import mock from '../mock/youtube-videos-mock.json';
 
 // const videoSelectedMock = mock.items[1];
@@ -69,7 +70,7 @@ function App() {
   }, [valueSearched]);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
           <ThemeContext.Provider value={{currentTheme: currentTheme, updateCurrentTheme: setCurrentTheme}}>
             <IconContext.Provider
@@ -81,14 +82,18 @@ function App() {
                 <Switch>
                   <Route exact path="/">
                     {/* {Object.keys(selectedVideo).length === 0 && <HomePage videoResults={videos} channelResults={channels} />} */}
-                    {Object.keys(selectedVideo).length > 0 &&  <VideoDetailsView /> }
+                    {/* {Object.keys(selectedVideo).length > 0 &&  <VideoDetailsView /> } */}
                     {/* <HomePage videoResults={allVideos} channelResults={[]} setVideoSelected={setCurrentVideo} /> */}
+                    <Favourites />
                   </Route>
                   <Route exact path="/login">
                     <LoginPage />
                   </Route>
                   <Private exact path="/secret">
                     <SecretPage />
+                  </Private>
+                  <Private path="/favourites">
+                    <Favourites />
                   </Private>
                   <Route path="*">
                     <NotFound />
@@ -99,7 +104,7 @@ function App() {
             </IconContext.Provider>
           </ThemeContext.Provider>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

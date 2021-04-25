@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../providers/Auth';
 
 const SideBar = () => {
@@ -18,7 +19,7 @@ const SideBar = () => {
             <div id="mySidebar" class="sidebar">
               <a href="javascript:void(0)" class="closebtn" onClick={closeNav}>×</a>
               <a href="#">Home</a>
-              { authenticated ? <a href="#">Favourites</a> : null }
+              { authenticated ? <Link to="/favourites">Favourites</Link> : null }
             </div>
         </>
     )
