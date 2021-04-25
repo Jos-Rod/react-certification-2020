@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { getDescription, getTitle, getVideoId } from '../../utils/utils';
+import { getDescription, getTitle, getVideoId, isInList } from '../../utils/utils';
 import VideoCardList from '../VideoCardList';
 import { IconContext } from 'react-icons';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
@@ -9,10 +9,11 @@ import { GrandContainerVideo, VideoContainerParent, ContainerVideoAndInfo, Every
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 import useYTubeRequest from '../../utils/hooks/useYTbe.js';
 import { ButtonHoverItem } from '../NavBar/NavBar-styling';
+import { useAuth } from '../../providers/Auth';
 
 
 const VideoDetailsView = () => {
-    const { selectedVideo, withMock } = useSiteInfo();
+    const { selectedVideo, withMock, saveOrRemoveVideoFavourites, favouriteVideos } = useSiteInfo();
     const [displayTitle, setDisplayTitle] = useState("");
     const [displayDescription, setDisplayDescription] = useState("");
     const [videoSource, setVideoSource] = useState("");
@@ -20,6 +21,7 @@ const VideoDetailsView = () => {
     const videosRelated = {};
 
     const { currentTheme } = useContext(ThemeContext);
+    const { authenticated } = useAuth();
 
     useEffect(() => {
         if (Object.keys(selectedVideo).length > 0) {
@@ -31,6 +33,10 @@ const VideoDetailsView = () => {
             // get related videos
         }
     }, [selectedVideo]);
+
+    function handleClickFavourite() {
+        saveOrRemoveVideoFavourites(selectedVideo);
+    }
 
     return (
         <>
@@ -53,11 +59,11 @@ const VideoDetailsView = () => {
                         <div style={{marginLeft: '10px', }}>
                             <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
                                 <VideoTitleStyle theme={currentTheme} className="videoTitleStyle">{displayTitle}</VideoTitleStyle>
-                                <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
-                                    <ButtonHoverItem>
-                                        <FaRegHeart />
+                                { authenticated ? <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
+                                    <ButtonHoverItem onClick={handleClickFavourite} >
+                                        { isInList(favouriteVideos, selectedVideo) ? <FaRegHeart /> : <FaHeart /> } 
                                     </ButtonHoverItem>
-                                </div>
+                                </div> : null}
                             </div>
                             <VideoDescriptionStyle theme={currentTheme} className="videoDescriptionStyle">{displayDescription}</VideoDescriptionStyle>
                         </div>

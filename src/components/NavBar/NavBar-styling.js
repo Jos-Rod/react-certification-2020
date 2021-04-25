@@ -42,23 +42,25 @@ outline: none;
 `;
 
 export const ButtonHoverItem = styled.button`
+  display: 'inline';
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  transition-duration: 0.4s;
+  border-radius: 30px;
 
-display: 'inline';
-background-color: transparent;
-border: 0;
-outline: none;
-transition-duration: 0.4s;
-border-radius: 30px;
-margin-right: 10px;
+  &:hover {
+    display: 'inline';
+    background-color: ${props => props.theme.backgroundPrincipalColor};
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    box-shadow: 0 20px 15px 0 rgba(0, 0, 0 , .1);
+  }
 
-&:hover {
-display: 'inline';
-background-color: ${props => props.theme.backgroundPrincipalColor};
-border: 0;
-outline: none;
-border-radius: 30px;
-box-shadow: 0 20px 15px 0 rgba(0, 0, 0 , .1);
-}
+  @media screen and (max-width: 600px) {
+      margin-right: 0px;
+    }
 `;
 
 export const NotDisplayWhenSmall = styled.div`
