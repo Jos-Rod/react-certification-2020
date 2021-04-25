@@ -31,7 +31,7 @@ export const SizeOfInput = styled.div`
     width: 400px;
     margin-right: 4px;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 800px) {
     width: 100%;
   }
 `;

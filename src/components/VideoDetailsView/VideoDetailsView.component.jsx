@@ -29,8 +29,6 @@ const VideoDetailsView = () => {
             setDisplayTitle(getTitle(selectedVideo));
             setDisplayDescription(getDescription(selectedVideo));
             setVideoSource(`https://www.youtube.com/embed/${getVideoId(selectedVideo)}?enablejsapi=1`);
-            
-            // get related videos
         }
     }, [selectedVideo]);
 

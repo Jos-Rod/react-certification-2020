@@ -58,13 +58,13 @@ export const ButtonHoverItem = styled.button`
     box-shadow: 0 20px 15px 0 rgba(0, 0, 0 , .1);
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 800px) {
       margin-right: 0px;
     }
 `;
 
 export const NotDisplayWhenSmall = styled.div`
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 800px) {
     display: none;
   }
 `;

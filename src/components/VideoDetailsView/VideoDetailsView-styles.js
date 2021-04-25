@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const EverythingContainer = styled.div`
     margin-top: 80px;
     
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 800px) {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -18,7 +18,7 @@ export const VideoContainerParent = styled.div`
     margin-bottom: 10px;
     box-sizing: border-box;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 800px) {
         width: 90%;
         margin-left: 0px;
     }
@@ -26,7 +26,7 @@ export const VideoContainerParent = styled.div`
 
 export const RelatedVideosParent = styled.div`
     float: left;
-    width: 35%;
+    width: 30%;
     text-align: center;
     box-sizing: border-box;
 `;
