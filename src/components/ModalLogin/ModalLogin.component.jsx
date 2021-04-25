@@ -46,7 +46,7 @@ const ModalLogin = ({ theme }) =>  {
     return ReactDOM.createPortal(<Modal>
         <ModalStructure theme={theme}>
             <div style={{textAlign: 'right'}}>
-                <ButtonHoverItem style={{ fontWeight: "800" }} onClick={showOrHideModalLogin}>X</ButtonHoverItem>
+                <ButtonHoverItem style={{ fontWeight: "800", marginRight: '20px' }} onClick={showOrHideModalLogin}>X</ButtonHoverItem>
             </div>
             <h2 style={{ margin: "0px", }}>{ authenticated ? "Log out" : "Login"}</h2>
             {/* { authenticated ? <LoginContent/> : <LogoutContent /> } */}
