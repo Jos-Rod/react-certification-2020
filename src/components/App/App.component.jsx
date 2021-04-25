@@ -16,6 +16,8 @@ import VideoDetailsView from '../VideoDetailsView/VideoDetailsView.component';
 import { getVideoId } from '../../utils/utils';
 import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
+import './App.styles.css';
+import SideBar from '../SideBar/SideBar.component';
 // import mock from '../mock/youtube-videos-mock.json';
 
 // const videoSelected = mock.items[0];
@@ -64,11 +66,13 @@ function App() {
     setValSearch(valueSearched);
   }, [valueSearched]);
 
+
   return (
     <BrowserRouter>
       <AuthProvider>
           <ThemeContext.Provider value={{currentTheme: currentTheme, updateCurrentTheme: setCurrentTheme}}>
             <NavBar homeAction={goHome}/>
+            <SideBar />
             <Layout>
               <Switch>
                 <Route exact path="/">

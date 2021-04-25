@@ -23,6 +23,10 @@ const NavBar = (props) =>  {
     showOrHideModalLogin();
   }
 
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+  }
+
    return  (
       <IconContext.Provider
         value={{ style: { fontSize: '36px', color: 'rgb(255, 255, 224)' } }}
@@ -34,7 +38,9 @@ const NavBar = (props) =>  {
         </ModalLogin> */}
         <NavBarStyled theme={currentTheme}>
           <div style={{ marginLeft: '30px', display: 'flex', alignItems: 'center' }}>
-            <GiHamburgerMenu />
+            <ButtonHoverItem onClick={openNav}> 
+              <GiHamburgerMenu />
+            </ButtonHoverItem>
             <ButtonHome style={{ marginLeft:"30px" }} theme={currentTheme} onClick={props.homeAction} >YouZline</ButtonHome>
           </div>
           <SearchBar />
@@ -44,7 +50,6 @@ const NavBar = (props) =>  {
               {currentTheme === themes.light ? <FaRegMoon className="ASDF" /> : <FaSun/> }
             </ButtonHoverItem>
             <ButtonHoverItem theme={currentTheme} className="buttonUser" onClick={handleClickLoginButton}>
-              
               { !authenticated ? <FaUserAltSlash/> : <FaUserAlt /> }
             </ButtonHoverItem>
           </div>
