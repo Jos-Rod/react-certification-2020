@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
+import { IconContext } from 'react-icons';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
@@ -71,27 +72,31 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
           <ThemeContext.Provider value={{currentTheme: currentTheme, updateCurrentTheme: setCurrentTheme}}>
-            <NavBar homeAction={goHome}/>
-            <SideBar />
-            <Layout>
-              <Switch>
-                <Route exact path="/">
-                  {/* {Object.keys(selectedVideo).length === 0 && <HomePage videoResults={videos} channelResults={channels} />} */}
-                  {Object.keys(selectedVideo).length > 0 &&  <VideoDetailsView /> }
-                  {/* <HomePage videoResults={allVideos} channelResults={[]} setVideoSelected={setCurrentVideo} /> */}
-                </Route>
-                <Route exact path="/login">
-                  <LoginPage />
-                </Route>
-                <Private exact path="/secret">
-                  <SecretPage />
-                </Private>
-                <Route path="*">
-                  <NotFound />
-                </Route>
-              </Switch>
-              <Fortune />
-            </Layout>
+            <IconContext.Provider
+              value={{ style: { fontSize: '36px', color: 'rgb(255, 255, 224)' } }}
+            >
+              <NavBar homeAction={goHome}/>
+              <SideBar />
+              <Layout>
+                <Switch>
+                  <Route exact path="/">
+                    {/* {Object.keys(selectedVideo).length === 0 && <HomePage videoResults={videos} channelResults={channels} />} */}
+                    {Object.keys(selectedVideo).length > 0 &&  <VideoDetailsView /> }
+                    {/* <HomePage videoResults={allVideos} channelResults={[]} setVideoSelected={setCurrentVideo} /> */}
+                  </Route>
+                  <Route exact path="/login">
+                    <LoginPage />
+                  </Route>
+                  <Private exact path="/secret">
+                    <SecretPage />
+                  </Private>
+                  <Route path="*">
+                    <NotFound />
+                  </Route>
+                </Switch>
+                <Fortune />
+              </Layout>
+            </IconContext.Provider>
           </ThemeContext.Provider>
       </AuthProvider>
     </BrowserRouter>

@@ -65,10 +65,15 @@ export const VideoTitleStyle = styled.h3`
     border-radius: 0 0 15px 15px;
     color: white;
     max-width: 80%;
+
+    @media screen and (max-width: 600px) {
+        margin-left: 10px;
+        margin-bottom: 0px;
+    }
 `;
 
 export const VideoDescriptionStyle = styled.p`
-    margin-top: -5px;
+    margin-top: 10px;
     margin-left: 15px;
     margin-right: 15px;
     padding: 10px;

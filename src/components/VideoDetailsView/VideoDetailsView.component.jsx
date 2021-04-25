@@ -1,11 +1,15 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { getDescription, getTitle, getVideoId } from '../../utils/utils';
 import VideoCardList from '../VideoCardList';
+import { IconContext } from 'react-icons';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import './VideoDetailsView-styles.js';
 import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
 import { GrandContainerVideo, VideoContainerParent, ContainerVideoAndInfo, EverythingContainer, VideoPlayerContainer, RelatedVideosParent, VideoTitleStyle, VideoDescriptionStyle } from './VideoDetailsView-styles.js';
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 import useYTubeRequest from '../../utils/hooks/useYTbe.js';
+import { ButtonHoverItem } from '../NavBar/NavBar-styling';
+
 
 const VideoDetailsView = () => {
     const { selectedVideo, withMock } = useSiteInfo();
@@ -30,6 +34,9 @@ const VideoDetailsView = () => {
 
     return (
         <>
+        <IconContext.Provider
+              value={{ style: { fontSize: '36px', color: 'rgb(252, 72, 72)' } }}
+            >
             <EverythingContainer>
                 <VideoContainerParent>
                     <ContainerVideoAndInfo theme={currentTheme} >
@@ -44,7 +51,14 @@ const VideoDetailsView = () => {
                             </VideoPlayerContainer>
                         </GrandContainerVideo>
                         <div style={{marginLeft: '10px', }}>
-                            <VideoTitleStyle theme={currentTheme} className="videoTitleStyle">{displayTitle}</VideoTitleStyle>
+                            <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                                <VideoTitleStyle theme={currentTheme} className="videoTitleStyle">{displayTitle}</VideoTitleStyle>
+                                <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
+                                    <ButtonHoverItem>
+                                        <FaRegHeart />
+                                    </ButtonHoverItem>
+                                </div>
+                            </div>
                             <VideoDescriptionStyle theme={currentTheme} className="videoDescriptionStyle">{displayDescription}</VideoDescriptionStyle>
                         </div>
                     </ContainerVideoAndInfo>
@@ -61,6 +75,7 @@ const VideoDetailsView = () => {
                     </div>
                 </RelatedVideosParent>
             </EverythingContainer>
+            </IconContext.Provider>
         </>
     );
 

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { FaUserAlt, FaRegMoon, FaSun, FaUserAltSlash } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { IconContext } from 'react-icons';
 import SearchBar from '../SearchBar';
 import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
 import { ButtonHome, NavBarStyled, ButtonHoverItem, NotDisplayWhenSmall } from './NavBar-styling';
@@ -28,9 +27,7 @@ const NavBar = (props) =>  {
   }
 
    return  (
-      <IconContext.Provider
-        value={{ style: { fontSize: '36px', color: 'rgb(255, 255, 224)' } }}
-      >
+     <>
         { showingModalLogin ? 
         <ModalLogin theme={currentTheme}>
         </ModalLogin> : null}
@@ -56,7 +53,7 @@ const NavBar = (props) =>  {
             </ButtonHoverItem>
           </div>
         </NavBarStyled>
-      </IconContext.Provider>
+        </>
   );
 
   };
