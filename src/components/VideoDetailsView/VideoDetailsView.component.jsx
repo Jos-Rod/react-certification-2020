@@ -8,11 +8,12 @@ import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider'
 import useYTubeRequest from '../../utils/hooks/useYTbe.js';
 
 const VideoDetailsView = () => {
-    const { selectedVideo } = useSiteInfo();
+    const { selectedVideo, withMock } = useSiteInfo();
     const [displayTitle, setDisplayTitle] = useState("");
     const [displayDescription, setDisplayDescription] = useState("");
     const [videoSource, setVideoSource] = useState("");
-    const videosRelated = useYTubeRequest(Object.keys(selectedVideo).length > 0 ? getVideoId(selectedVideo) : "wizeline", "SEARCH_RELATED");
+    // const videosRelated = useYTubeRequest(Object.keys(selectedVideo).length > 0 ? getVideoId(selectedVideo) : "wizeline", "SEARCH_RELATED");
+    const videosRelated = {};
 
     const { currentTheme } = useContext(ThemeContext);
 
@@ -53,10 +54,10 @@ const VideoDetailsView = () => {
                         <div>
                             <h4 style={{ textAlign: 'left', marginLeft: '20pt', marginBottom: '0px' }}>Related videos</h4>
                         </div>
-                        <div>
+                        { !withMock ?<div>
                             {/* Related videos */}
                             { videosRelated.videos.length > 0 ? <VideoCardList videoList={videosRelated.videos} cardStyle="horizontal" /> : null }
-                        </div>
+                        </div> : null}
                     </div>
                 </RelatedVideosParent>
             </div>

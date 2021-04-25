@@ -20,7 +20,7 @@ import './App.styles.css';
 import SideBar from '../SideBar/SideBar.component';
 // import mock from '../mock/youtube-videos-mock.json';
 
-// const videoSelected = mock.items[0];
+// const videoSelectedMock = mock.items[1];
 // const allVideos = mock.items;
 
 function App() {
@@ -50,7 +50,7 @@ function App() {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   })
 
-  const { valueSearched, selectedVideo, setSelectedVideo, setRelatedVideos } = useSiteInfo();
+  const { valueSearched, selectedVideo, setSelectedVideo, setSearchedValue } = useSiteInfo();
 
   const [valSearch, setValSearch] = useState("");
   const {videos, channels} = useYTubeRequest(valSearch, "SEARCH_VIDEOS");
@@ -58,6 +58,7 @@ function App() {
   function goHome() {
     setValSearch("");
     setSelectedVideo({});
+    setSearchedValue("");
   }
 
   const [currentTheme, setCurrentTheme] = useState(themes.light);
@@ -65,7 +66,6 @@ function App() {
   useEffect(() => {
     setValSearch(valueSearched);
   }, [valueSearched]);
-
 
   return (
     <BrowserRouter>

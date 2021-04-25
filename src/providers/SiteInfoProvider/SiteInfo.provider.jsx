@@ -1,10 +1,14 @@
 import React, { useReducer, useContext } from 'react';
+import mock from '../../components/mock/youtube-videos-mock.json';
+
+const videoSelectedMock = mock.items[1];
 
 
 const inicialState = {
     valueSearched: "",
     selectedVideo: {},
     showingModalLogin: false,
+    withMock: true
   }
 
 const actions = {
@@ -45,6 +49,7 @@ function SiteInfoProvider({children}) {
         valueSearched: state.valueSearched,
         selectedVideo: state.selectedVideo,
         showingModalLogin: state.showingModalLogin,
+        withMock: state.withMock,
         setSearchedValue: value => {
             dispatch({ type: actions.UPDATE_SEARCHED_VALUE, value });
         },

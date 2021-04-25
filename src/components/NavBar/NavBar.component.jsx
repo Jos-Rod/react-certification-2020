@@ -4,7 +4,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { IconContext } from 'react-icons';
 import SearchBar from '../SearchBar';
 import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
-import { ButtonHome, NavBarStyled, ButtonHoverItem } from './NavBar-styling';
+import { ButtonHome, NavBarStyled, ButtonHoverItem, NotDisplayWhenSmall } from './NavBar-styling';
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 import ModalLogin from '../ModalLogin/ModalLogin.component';
 import { useAuth } from '../../providers/Auth/Auth.provider';
@@ -41,7 +41,9 @@ const NavBar = (props) =>  {
             <ButtonHoverItem onClick={openNav}> 
               <GiHamburgerMenu />
             </ButtonHoverItem>
-            <ButtonHome style={{ marginLeft:"30px" }} theme={currentTheme} onClick={props.homeAction} >YouZline</ButtonHome>
+            <NotDisplayWhenSmall>
+              <ButtonHome style={{ marginLeft:"30px" }} theme={currentTheme} onClick={props.homeAction} >YouZline</ButtonHome>
+            </NotDisplayWhenSmall>
           </div>
           <SearchBar />
           <div style={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>

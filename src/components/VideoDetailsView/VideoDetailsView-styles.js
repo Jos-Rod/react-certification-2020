@@ -7,6 +7,10 @@ export const VideoContainerParent = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
+
+    @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const RelatedVideosParent = styled.div`
@@ -49,6 +53,7 @@ export const VideoTitleStyle = styled.h3`
     margin-left: 40px;
     border-radius: 0 0 15px 15px;
     color: white;
+    max-width: 80%;
 `;
 
 export const VideoDescriptionStyle = styled.p`

@@ -40,6 +40,7 @@ cursor: pointer;
 outline: none;
 }
 `;
+
 export const ButtonHoverItem = styled.button`
 
 display: 'inline';
@@ -58,4 +59,10 @@ outline: none;
 border-radius: 30px;
 box-shadow: 0 20px 15px 0 rgba(0, 0, 0 , .1);
 }
+`;
+
+export const NotDisplayWhenSmall = styled.div`
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;

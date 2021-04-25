@@ -1,6 +1,8 @@
 import React from 'react';
+import { useAuth } from '../../providers/Auth';
 
 const SideBar = () => {
+    const { authenticated } = useAuth();
 
     function closeNav() {
         document.getElementById("mySidebar").style.width = "0";
@@ -16,7 +18,7 @@ const SideBar = () => {
             <div id="mySidebar" class="sidebar">
               <a href="javascript:void(0)" class="closebtn" onClick={closeNav}>×</a>
               <a href="#">Home</a>
-              <a href="#">Favourites</a>
+              { authenticated ? <a href="#">Favourites</a> : null }
             </div>
         </>
     )
