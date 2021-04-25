@@ -41,7 +41,7 @@ const VideoDetailsView = () => {
     return (
         <>
         <IconContext.Provider
-              value={{ style: { fontSize: '36px', color: 'rgb(252, 72, 72)' } }}
+              value={{ style: { fontSize: '36px', color: 'hsl(0, 96.77419354838712%, 63.52941176470588%)' } }}
             >
             <EverythingContainer>
                 <VideoContainerParent>
