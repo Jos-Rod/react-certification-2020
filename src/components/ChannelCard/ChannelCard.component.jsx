@@ -1,30 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './ChannelCard.styles.css';
 import { getVideoSrc, getTitle } from '../../utils/utils.js';
+import { ChannelImage, FatherChannelCard } from './ChannelCard.styling';
+import { ThemeContext, useTheme } from 'styled-components';
 
 
 const ChannelCard = ({ channel }) => {
-    console.log(channel);
-    console.log(`title: ${getTitle(channel)} | imagen: ${getVideoSrc(channel)}`);
+
+    const { currentTheme } = useContext(ThemeContext);
+
     return (
         <>
-        <div className="divFatherChannelCard">
+        <FatherChannelCard theme={currentTheme}>
             {/* <h4>{channel.snippet.title}</h4> */}
             <div style={{display: 'flex', alignItems: 'center'}}>
-                <div className="divChannelImage" style={{
-                    width: '70pt',
-                    height: '70pt',
-                    backgroundImage: `url("${getVideoSrc(channel)}")`,
-                    backgroundSize: 'cover',
-                    borderRadius: '50%',
-                    backgroundRepeat: 'no-repeat',
-                    display: 'inline'                    
-                }}></div>
+                <ChannelImage imgSrc={`url("${getVideoSrc(channel)}")`} />
                 <div style={{ display:'inline', marginLeft: '10px' }}>
                     <h5>{getTitle(channel)}</h5>
                 </div>
             </div>
-        </div>
+        </FatherChannelCard>
         </>
     );
 };

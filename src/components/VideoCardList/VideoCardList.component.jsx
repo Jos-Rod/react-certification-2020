@@ -7,7 +7,6 @@ import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider'
 const VideoCardList = ({ videoList, cardStyle, isFromFav, showCurrent = false }) => {
   
   const [videosToRender, setVideosToRender] = useState([]);
-  const { selectedVideoFav } = useSiteInfo();
 
   useEffect(() => {
     if (videoList) {

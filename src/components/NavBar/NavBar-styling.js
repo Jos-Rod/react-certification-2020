@@ -14,31 +14,31 @@ export const NavBarStyled = styled.div`
 `;
 
 export const ButtonHome = styled.button`
-background-color: white;
-color: ${props => props.theme.backgroundPrincipalColor};
-border-style: none;
-padding: 10px;
-font-weight: 800;
-letter-spacing: 2px;
-border-radius: 10px 15px 10px 15px;
-transition-duration: 0.4s;
-font-size: large;
-outline: none;
-;
+  background-color: white;
+  color: ${props => props.theme.backgroundPrincipalColor};
+  border-style: none;
+  padding: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  border-radius: 10px 15px 10px 15px;
+  transition-duration: 0.4s;
+  font-size: large;
+  outline: none;
+  ;
 
-&:hover {
-margin-left: 30px;
-font-size: large;
-background-color: transparent;
-color: white;
-border-style: none;
-padding: 10px;
-font-weight: 800;
-letter-spacing: 2.8px;
-border-radius: 10px 15px 10px 15px;
-cursor: pointer;
-outline: none;
-}
+  &:hover {
+  margin-left: 30px;
+  font-size: large;
+  background-color: transparent;
+  color: white;
+  border-style: none;
+  padding: 10px;
+  font-weight: 800;
+  letter-spacing: 2.8px;
+  border-radius: 10px 15px 10px 15px;
+  cursor: pointer;
+  outline: none;
+  }
 `;
 
 export const ButtonHoverItem = styled.button`
