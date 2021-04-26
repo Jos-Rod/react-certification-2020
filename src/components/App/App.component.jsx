@@ -20,12 +20,14 @@ import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider'
 import './App.styles.css';
 import SideBar from '../SideBar/SideBar.component';
 import Favourites from '../../pages/Favourites/Favourites.page';
+import VideoDetailsFavourite from '../../pages/VideoDetailsFavourite';
 // import mock from '../mock/youtube-videos-mock.json';
 
 // const videoSelectedMock = mock.items[1];
 // const allVideos = mock.items;
 
 function App() {
+
   useLayoutEffect(() => {
     const { body } = document;
 
@@ -55,7 +57,7 @@ function App() {
   const { valueSearched, selectedVideo, setSelectedVideo, setSearchedValue } = useSiteInfo();
 
   const [valSearch, setValSearch] = useState("");
-  // const {videos, channels} = useYTubeRequest(valSearch, "SEARCH_VIDEOS");
+  const {videos, channels} = useYTubeRequest(valSearch, "SEARCH_VIDEOS");
 
   function goHome() {
     setValSearch("");
@@ -81,19 +83,24 @@ function App() {
               <Layout>
                 <Switch>
                   <Route exact path="/">
-                    {/* {Object.keys(selectedVideo).length === 0 && <HomePage videoResults={videos} channelResults={channels} />} */}
+                    {Object.keys(selectedVideo).length === 0 && <HomePage videoResults={videos} channelResults={channels} />}
                     {/* {Object.keys(selectedVideo).length > 0 &&  <VideoDetailsView /> } */}
                     {/* <HomePage videoResults={allVideos} channelResults={[]} setVideoSelected={setCurrentVideo} /> */}
-                    <Favourites />
                   </Route>
                   <Route exact path="/login">
                     <LoginPage />
+                  </Route>
+                  <Route exact path="/vd/:id">
+                    <VideoDetailsView />
                   </Route>
                   <Private exact path="/secret">
                     <SecretPage />
                   </Private>
                   <Private path="/favourites">
                     <Favourites />
+                  </Private>
+                  <Private path="/vdf">
+                    <VideoDetailsFavourite />
                   </Private>
                   <Route path="*">
                     <NotFound />

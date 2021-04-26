@@ -29,6 +29,13 @@ export const VideoCardStyled = styled.div`
       align-items: center;
   }`
     }
+
+    ${props => props.isCurrent ? 
+    `
+    border: 4px solid;
+    `: null}
+    border-color: ${props => props.theme.backgroundPrincipalColor};
+
     &:hover {
       background-color: ${props => props.theme.hoverBackgroundColor};
       width: ${props => props.cardStyle !== "horizontal" ? '15rem' : null};

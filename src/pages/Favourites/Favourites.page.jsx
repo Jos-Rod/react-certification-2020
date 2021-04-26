@@ -9,7 +9,7 @@ const Favourites = () => {
         <>
             <div style={{ marginTop: '60px', padding: '20px' }}>
                 <h2>Favourite videos</h2>
-                <VideoCardList videoList={favouriteVideos} cardStyle="horizontal" />
+                <VideoCardList videoList={favouriteVideos} cardStyle="horizontal" isFromFav={true} />
             </div>
         </>
     );

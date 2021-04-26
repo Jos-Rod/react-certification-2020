@@ -1,40 +1,35 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { getDescription, getTitle, getVideoId, isInList } from '../../utils/utils';
-import VideoCardList from '../VideoCardList';
 import { IconContext } from 'react-icons';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import './VideoDetailsView-styles.js';
-import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
-import { GrandContainerVideo, VideoContainerParent, ContainerVideoAndInfo, EverythingContainer, VideoPlayerContainer, RelatedVideosParent, VideoTitleStyle, VideoDescriptionStyle } from './VideoDetailsView-styles.js';
+import ThemeContext from '../../providers/Theme/Theme.provider';
+import { GrandContainerVideo, VideoContainerParent, ContainerVideoAndInfo, EverythingContainer, VideoPlayerContainer, RelatedVideosParent, VideoTitleStyle, VideoDescriptionStyle } from './VideoDetailsFavourite.styling.js';
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
-import useYTubeRequest from '../../utils/hooks/useYTbe.js';
-import { ButtonHoverItem } from '../NavBar/NavBar-styling';
 import { useAuth } from '../../providers/Auth';
+import { ButtonHoverItem } from '../../components/NavBar/NavBar-styling';
+import VideoCardList from '../../components/VideoCardList';
 
 
-const VideoDetailsView = () => {
-    const { selectedVideo, withMock, saveOrRemoveVideoFavourites, favouriteVideos } = useSiteInfo();
+const VideoDetailsFavourite = () => {
+    const { saveOrRemoveVideoFavourites, favouriteVideos, selectedVideoFav } = useSiteInfo();
     const [displayTitle, setDisplayTitle] = useState("");
     const [displayDescription, setDisplayDescription] = useState("");
     const [videoSource, setVideoSource] = useState("");
-    const videosRelated = useYTubeRequest(Object.keys(selectedVideo).length > 0 ? getVideoId(selectedVideo) : "wizeline", "SEARCH_RELATED");
 
     const { currentTheme } = useContext(ThemeContext);
     const { authenticated } = useAuth();
 
     useEffect(() => {
-        if (Object.keys(selectedVideo).length > 0) {
+        if (Object.keys(selectedVideoFav).length > 0) {
             // set video info
-            setDisplayTitle(getTitle(selectedVideo));
-            setDisplayDescription(getDescription(selectedVideo));
-            setVideoSource(`https://www.youtube.com/embed/${getVideoId(selectedVideo)}?enablejsapi=1`);
+            setDisplayTitle(getTitle(selectedVideoFav));
+            setDisplayDescription(getDescription(selectedVideoFav));
+            setVideoSource(`https://www.youtube.com/embed/${getVideoId(selectedVideoFav)}?enablejsapi=1`);
         }
-    }, [selectedVideo]);
+    }, [selectedVideoFav]);
 
     function handleClickFavourite() {
-        console.log("por poner en favoritos");
-        console.log(selectedVideo);
-        saveOrRemoveVideoFavourites(selectedVideo);
+        saveOrRemoveVideoFavourites(selectedVideoFav);
     }
 
     return (
@@ -60,7 +55,7 @@ const VideoDetailsView = () => {
                                 <VideoTitleStyle theme={currentTheme} className="videoTitleStyle">{displayTitle}</VideoTitleStyle>
                                 { authenticated ? <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
                                     <ButtonHoverItem onClick={handleClickFavourite} >
-                                        { isInList(favouriteVideos, selectedVideo) ? <FaHeart /> : <FaRegHeart /> } 
+                                        { !isInList(favouriteVideos, selectedVideoFav) ? <FaRegHeart /> : <FaHeart /> } 
                                     </ButtonHoverItem>
                                 </div> : null}
                             </div>
@@ -71,12 +66,10 @@ const VideoDetailsView = () => {
                 <RelatedVideosParent >
                     <div style={{ margin: '10px' }}>
                         <div>
-                            <h4 style={{ textAlign: 'left', marginLeft: '20pt', marginBottom: '0px' }}>Related videos</h4>
+                            <h4 style={{ textAlign: 'left', marginLeft: '20pt', marginBottom: '0px' }}>Favourite videos</h4>
                         </div>
-                        { !withMock ?<div>
                             {/* Related videos */}
-                            { videosRelated.videos.length > 0 ? <VideoCardList videoList={videosRelated.videos} cardStyle="horizontal" /> : null }
-                        </div> : null}
+                            { favouriteVideos.length > 0 ? <VideoCardList videoList={favouriteVideos} cardStyle="horizontal" showCurrent={true} isFromFav={true} /> : null }
                     </div>
                 </RelatedVideosParent>
             </EverythingContainer>
@@ -86,4 +79,4 @@ const VideoDetailsView = () => {
 
 };
 
-export default VideoDetailsView;
+export default VideoDetailsFavourite;

@@ -9,10 +9,11 @@ const videoSelectedMock = mock.items[1];
 
 const inicialState = {
     valueSearched: "",
-    selectedVideo: videoSelectedMock,
+    selectedVideo: {},
     showingModalLogin: false,
-    withMock: true,
-    favouriteVideos: getAllFavouriteVideos()
+    withMock: false,
+    favouriteVideos: getAllFavouriteVideos(),
+    selectedVideoFav: {}
 }
 
 const actions = {
@@ -21,7 +22,8 @@ const actions = {
     SELECT_VIDEO: "SELECT_VIDEO",
     SHOW_HIDE_MODAL_LOGIN: "SHOW_HIDE_MODAL_LOGIN",
     UPDATE_FAVOURITES_LIST: "UPDATE_FAVOURITES_LIST",
-    SAVE_REMOVE_FAVOURITE_VIDEO: "SAVE_REMOVE_FAVOURITE_VIDEO"
+    SAVE_REMOVE_FAVOURITE_VIDEO: "SAVE_REMOVE_FAVOURITE_VIDEO",
+    SET_SELECTED_VIDEO_FAV: "SET_SELECTED_VIDEO_FAV",
 }
 
 function reducer(state, action) {
@@ -34,6 +36,8 @@ function reducer(state, action) {
             return {...state, showingModalLogin: !state.showingModalLogin }
         case actions.UPDATE_FAVOURITES_LIST:
             return {...state, favouriteVideos: getAllFavouriteVideos() }
+        case actions.SET_SELECTED_VIDEO_FAV:
+            return {...state, selectedVideoFav: action.value }
         default:
         break;
     }
@@ -47,6 +51,9 @@ function storageOnLS() {
     if (!storage.get(VIDEO_FAVOURITES)) {
         storage.set(VIDEO_FAVOURITES, []);
     }
+    if (!Array.isArray(storage.get(VIDEO_FAVOURITES))) {
+        storage.set(VIDEO_FAVOURITES, []);
+    }
 }
 
 function saveFavouritesList(videoFavouritesList) {
@@ -57,15 +64,22 @@ function _saveOrRemoveVideoFavourites(video) {
     storageOnLS();
     let vFavourites = storage.get(VIDEO_FAVOURITES);
 
+    console.log("Adding to favo");
+    console.log(video);
+
     if (vFavourites.length === 0) {
-        vFavourites.push(video);
+        console.log("First in list");
+        vFavourites = [video];
         saveFavouritesList(vFavourites);
     } else if (vFavourites.some(vf => getVideoId(vf) == getVideoId(video))) {
+        console.log("Remove from list");
         // remove from list
         saveFavouritesList(vFavourites.filter(vf => getVideoId(vf) != getVideoId(video)));
     } else {
         // add to list
-        saveFavouritesList(vFavourites.push(video));
+        console.log("adding to list");
+        vFavourites.push(video)
+        saveFavouritesList(vFavourites);
     }
 }
 
@@ -93,6 +107,7 @@ function SiteInfoProvider({children}) {
         showingModalLogin: state.showingModalLogin,
         withMock: state.withMock,
         favouriteVideos: state.favouriteVideos,
+        selectedVideoFav: state.selectedVideoFav,
         setSearchedValue: value => {
             dispatch({ type: actions.UPDATE_SEARCHED_VALUE, value });
         },
@@ -108,6 +123,9 @@ function SiteInfoProvider({children}) {
         saveOrRemoveVideoFavourites: value => {
             _saveOrRemoveVideoFavourites(value);
             dispatch({ type: actions.UPDATE_FAVOURITES_LIST, value });
+        },
+        setSelectedVideoFav: value => {
+            dispatch({ type: actions.SET_SELECTED_VIDEO_FAV, value });
         },
     };
 

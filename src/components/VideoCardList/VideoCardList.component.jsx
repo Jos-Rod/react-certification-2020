@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './VideoCardList.styles.css';
 import VideoCard from '../VideoCard/VideoCard.component';
-import { getVideoSrc } from '../../utils/utils.js';
+import { getVideoId, getVideoSrc } from '../../utils/utils.js';
+import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 
-const VideoCardList = ({ videoList, cardStyle }) => {
+const VideoCardList = ({ videoList, cardStyle, isFromFav, showCurrent = false }) => {
   
   const [videosToRender, setVideosToRender] = useState([]);
+  const { selectedVideoFav } = useSiteInfo();
 
   useEffect(() => {
     if (videoList) {
@@ -23,6 +25,8 @@ const VideoCardList = ({ videoList, cardStyle }) => {
         video={vid}
         key={getVideoSrc(vid)} 
         cardStyle={cardStyle}
+        isFromFav={isFromFav}
+        showCurrent={showCurrent}
       />
     ))}
   </div>)
