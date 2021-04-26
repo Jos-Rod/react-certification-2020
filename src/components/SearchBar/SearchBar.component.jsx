@@ -5,6 +5,7 @@ import ThemeContext from '../../providers/Theme/Theme.provider';
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 import NiceInput from '../NiceInput/NiceInput.component';
 import { SearchButtonStyle, SizeOfInput } from './SearchBar.styling.js';
+import { Link } from 'react-router-dom';
 
 
 const SearchBar = () => {
@@ -30,9 +31,11 @@ const SearchBar = () => {
             <SizeOfInput>
                 <NiceInput value={searchValue} setValue={setSearchValue} placeholder="Search..." />
             </SizeOfInput>
-            <SearchButtonStyle onClick={handlerClickSearch} theme={currentTheme}>
-                Search
-            </SearchButtonStyle>
+            <Link to="/" onClick={handlerClickSearch}>
+                <SearchButtonStyle  theme={currentTheme}>
+                    Search 
+                </SearchButtonStyle>
+            </Link>
       </div>
     </>)
 };
