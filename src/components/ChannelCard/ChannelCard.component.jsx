@@ -7,11 +7,9 @@ import { ThemeContext, useTheme } from 'styled-components';
 
 const ChannelCard = ({ channel }) => {
 
-    const { currentTheme } = useContext(ThemeContext);
-
     return (
         <>
-        <FatherChannelCard theme={currentTheme}>
+        <FatherChannelCard>
             {/* <h4>{channel.snippet.title}</h4> */}
             <div style={{display: 'flex', alignItems: 'center'}}>
                 <ChannelImage imgSrc={`url("${getVideoSrc(channel)}")`} />

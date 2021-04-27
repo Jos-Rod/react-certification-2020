@@ -9,10 +9,6 @@ export const FatherChannelCard = styled.div`
     border-radius: 0px 30px 30px 0px;
     box-shadow: 14px 0px 6px -4px rgba(0, 0, 0 , .1);
 
-    &:hover {
-        background-color: ${props => props.currentTheme.hoverBackgroundColor}
-    }
-
     @media screen and (max-width: 800px) {
       width: 100%;
     }

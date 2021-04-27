@@ -75,11 +75,11 @@ function App() {
             <IconContext.Provider
               value={{ style: { fontSize: '36px', color: 'rgb(255, 255, 224)' } }}
             >
-              <NavBar homeAction={goHome}/>
               <SideBar />
               <Layout>
                 <Switch>
                   <Route exact path="/">
+                    <NavBar homeAction={goHome}/>
                     {videos.length === 0 ? 'No videos' : null}
                     <HomePage videoResults={videos} channelResults={channels} />
                     {/* {Object.keys(selectedVideo).length > 0 &&  <VideoDetailsView /> } */}
@@ -89,18 +89,22 @@ function App() {
                     <LoginPage />
                   </Route>
                   <Route exact path="/vd/:id">
+                    <NavBar homeAction={goHome}/>
                     <VideoDetailsView />
                   </Route>
                   <Private exact path="/secret">
                     <SecretPage />
                   </Private>
                   <Private path="/favourites">
+                    <NavBar homeAction={goHome}/>
                     <Favourites />
                   </Private>
                   <Private path="/vdf">
+                    <NavBar homeAction={goHome}/>
                     <VideoDetailsFavourite />
                   </Private>
                   <Route path="*">
+                    <NavBar homeAction={goHome}/>
                     <NotFound />
                   </Route>
                 </Switch>

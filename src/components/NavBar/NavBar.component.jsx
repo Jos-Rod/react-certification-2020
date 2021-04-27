@@ -7,6 +7,7 @@ import { ButtonHome, NavBarStyled, ButtonHoverItem, NotDisplayWhenSmall } from '
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 import ModalLogin from '../ModalLogin/ModalLogin.component';
 import { useAuth } from '../../providers/Auth/Auth.provider';
+import { Link } from 'react-router-dom';
 
 const NavBar = (props) =>  {
 
@@ -39,7 +40,7 @@ const NavBar = (props) =>  {
               <GiHamburgerMenu />
             </ButtonHoverItem>
             <NotDisplayWhenSmall>
-              <ButtonHome style={{ marginLeft:"30px" }} theme={currentTheme} onClick={props.homeAction} >YouZline</ButtonHome>
+              <Link to="/" onClick={props.homeAction}><ButtonHome style={{ marginLeft:"30px" }} theme={currentTheme} >YouZline</ButtonHome></Link>
             </NotDisplayWhenSmall>
           </div>
           <SearchBar />
