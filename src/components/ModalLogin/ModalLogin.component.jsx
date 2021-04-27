@@ -43,7 +43,7 @@ const ModalLogin = ({ theme }) =>  {
         showOrHideModalLogin();
     }
 
-    return ReactDOM.createPortal(<Modal>
+    return <Modal>
         <ModalStructure theme={theme}>
             <div style={{textAlign: 'right'}}>
                 <ButtonHoverItem style={{ fontWeight: "800", marginRight: '20px' }} onClick={showOrHideModalLogin}>X</ButtonHoverItem>
@@ -52,9 +52,9 @@ const ModalLogin = ({ theme }) =>  {
             {/* { authenticated ? <LoginContent/> : <LogoutContent /> } */}
             { !authenticated ? 
                 <div style={{ paddingLeft:"50px", paddingRight:"50px" }}>
-                <NiceInput placeholder="email" withLabel="email" value={email} setValue={setEmail} ></NiceInput>
+                <NiceInput placeholder="email" withLabel="email" value={email} setValue={setEmail} aria-label={"email-input"} ></NiceInput>
                 <NiceInput placeholder="password" withLabel="password" 
-                    isPassword={true} value={password} setValue={setPassword} ></NiceInput>
+                    isPassword={true} value={password} setValue={setPassword}  ></NiceInput>
                 { errorLogin ? <p style={{ color: "red", fontSize: "small", marginTop: "10px", fontWeight: "700" }}>Invalid credentials</p> : <></> }
                 <ButtonHome style={{ marginTop: !errorLogin ? "20px" : "0px", }} theme={theme} onClick={handleLoginButtonClick}>Sign in</ButtonHome>
             </div>
@@ -65,7 +65,7 @@ const ModalLogin = ({ theme }) =>  {
             </div> 
             }
         </ModalStructure>
-    </Modal>, document.getElementById('modallogin')); 
+    </Modal>; 
 }
 
 export default ModalLogin;

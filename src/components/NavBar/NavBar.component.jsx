@@ -8,6 +8,7 @@ import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider'
 import ModalLogin from '../ModalLogin/ModalLogin.component';
 import { useAuth } from '../../providers/Auth/Auth.provider';
 import { Link } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
 const NavBar = (props) =>  {
 
@@ -30,8 +31,8 @@ const NavBar = (props) =>  {
    return  (
      <>
         { showingModalLogin ? 
-        <ModalLogin theme={currentTheme}>
-        </ModalLogin> : null}
+        ReactDOM.createPortal(<ModalLogin theme={currentTheme}>
+        </ModalLogin>, document.getElementById('modallogin')) : null}
         {/* <ModalLogin theme={currentTheme}>
         </ModalLogin> */}
         <NavBarStyled theme={currentTheme}>
