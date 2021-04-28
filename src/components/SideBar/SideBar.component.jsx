@@ -19,7 +19,9 @@ const SideBar = () => {
         {/* <a className="closebtn" role="button" >
           ×
         </a> */}
-        <button className="closebtn" onClick={closeNav} type="button">×</button>
+        <button className="closebtn" onClick={closeNav} type="button">
+          ×
+        </button>
         <Link to="/">Home</Link>
         {authenticated ? <Link to="/favourites">Favourites</Link> : null}
       </div>
