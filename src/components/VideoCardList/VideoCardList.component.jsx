@@ -1,34 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './VideoCardList.styles.css';
-import videos from '../mock/youtube-videos-mock.json';
 import VideoCard from '../VideoCard/VideoCard.component';
+import { getVideoSrc } from '../../utils/utils';
 
-const { items } = videos;
+const VideoCardList = ({ videoList, cardStyle, isFromFav, showCurrent = false }) => {
+  const [videosToRender, setVideosToRender] = useState([]);
 
-export function getTitle(video) {
-  const aux = video.snippet.title;
-  return aux != null ? aux : '';
-}
-export function getDescription(video) {
-  const aux = video.snippet.description;
-  return aux != null ? aux : '';
-}
-export function getVideoSrc(video) {
-  const aux = video.snippet.thumbnails.high.url;
-  return aux != null ? aux : '';
-}
+  useEffect(() => {
+    if (videoList) {
+      if (videoList.length > 0) {
+        setVideosToRender(videoList);
+      }
+    }
+  }, [videoList]);
 
-const VideoCardList = ({ title, videoSrc, description }) => (
-  <div className="videosList">
-    {items.map((vid) => (
-      <VideoCard
-        title={getTitle(vid)}
-        description={getDescription(vid)}
-        videoSrc={getVideoSrc(vid)}
-        key={getVideoSrc(vid)} 
-      />
-    ))}
-  </div>
-);
+  return (
+    <div className="videosList">
+      {videosToRender.map(
+        (vid) =>
+          'snippet' in vid && (
+            <VideoCard
+              video={vid}
+              key={getVideoSrc(vid)}
+              cardStyle={cardStyle}
+              isFromFav={isFromFav}
+              showCurrent={showCurrent}
+            />
+          )
+      )}
+    </div>
+  );
+};
 
 export default VideoCardList;
