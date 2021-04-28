@@ -10,7 +10,7 @@ import Private from '../Private';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
 import NavBar from '../NavBar';
-import useYTubeRequest from '../../utils/hooks/useYTbe.js';
+import useYTubeRequest from '../../utils/hooks/useYTbe';
 import VideoDetailsView from '../VideoDetailsView/VideoDetailsView.component';
 import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';

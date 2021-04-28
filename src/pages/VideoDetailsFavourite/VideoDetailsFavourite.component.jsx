@@ -12,7 +12,7 @@ import {
   RelatedVideosParent,
   VideoTitleStyle,
   VideoDescriptionStyle,
-} from './VideoDetailsFavourite.styling.js';
+} from './VideoDetailsFavourite.styling';
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 import { useAuth } from '../../providers/Auth';
 import { ButtonHoverItem } from '../../components/NavBar/NavBar-styling';

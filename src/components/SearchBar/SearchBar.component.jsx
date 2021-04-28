@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { SearchButtonStyle, SizeOfInput } from './SearchBar.styling.js';
+import { SearchButtonStyle, SizeOfInput } from './SearchBar.styling';
 import ThemeContext from '../../providers/Theme/Theme.provider';
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 import NiceInput from '../NiceInput/NiceInput.component';

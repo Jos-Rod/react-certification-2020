@@ -1,6 +1,6 @@
 import React from 'react';
 import './ChannelCard.styles.css';
-import { getVideoSrc, getTitle } from '../../utils/utils.js';
+import { getVideoSrc, getTitle } from '../../utils/utils';
 import { ChannelImage, FatherChannelCard } from './ChannelCard.styling';
 
 const ChannelCard = ({ channel }) => {

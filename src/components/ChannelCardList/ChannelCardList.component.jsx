@@ -1,6 +1,6 @@
 import React from 'react';
 import ChannelCard from '../ChannelCard';
-import { getChannelId } from '../../utils/utils.js';
+import { getChannelId } from '../../utils/utils';
 
 const ChannelCardList = ({ channelList, itemsAlignTo }) => {
   return (

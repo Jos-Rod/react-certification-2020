@@ -12,11 +12,11 @@ import {
   RelatedVideosParent,
   VideoTitleStyle,
   VideoDescriptionStyle,
-} from './VideoDetailsView-styles.js';
+} from './VideoDetailsView-styles';
 import ThemeContext from '../../providers/Theme/Theme.provider';
 
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
-import useYTubeRequest from '../../utils/hooks/useYTbe.js';
+import useYTubeRequest from '../../utils/hooks/useYTbe';
 import { ButtonHoverItem } from '../NavBar/NavBar-styling';
 import { useAuth } from '../../providers/Auth';
 
