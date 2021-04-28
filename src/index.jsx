@@ -8,7 +8,7 @@ import SiteInfoProvider from './providers/SiteInfoProvider/SiteInfo.provider';
 ReactDOM.render(
   <React.StrictMode>
     <SiteInfoProvider>
-    <App />
+      <App />
     </SiteInfoProvider>
   </React.StrictMode>,
   document.getElementById('root')

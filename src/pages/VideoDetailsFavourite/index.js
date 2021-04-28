@@ -1,1 +1,1 @@
-export { default } from './VideoDetailsFavourite.component.jsx';
+export { default } from './VideoDetailsFavourite.component';

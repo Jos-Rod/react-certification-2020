@@ -1,13 +1,11 @@
 import React from 'react';
-import './Home.stying.js';
+import { WrapperChannels, WrapperVideos } from './Home.stying';
 import VideoCardList from '../../components/VideoCardList';
 import ChannelCardList from '../../components/ChannelCardList';
-import { WrapperChannels, WrapperVideos } from './Home.stying.js';
 
 function HomePage({ videoResults, channelResults, setVideoSelected }) {
-
   const cardListWidth = channelResults.length > 0 ? '70%' : '100%';
-//  cardListWidth
+  //  cardListWidth
   return (
     <div style={{ marginTop: 100 }}>
       <section>
@@ -15,10 +13,11 @@ function HomePage({ videoResults, channelResults, setVideoSelected }) {
           <WrapperVideos cardListWidth={cardListWidth}>
             <VideoCardList videoList={videoResults} setVideoSelected={setVideoSelected} />
           </WrapperVideos>
-          { channelResults.length > 0 &&
-          <WrapperChannels>
-            <ChannelCardList channelList={channelResults} itemsAlignTo="left" /> 
-          </WrapperChannels>}
+          {channelResults.length > 0 && (
+            <WrapperChannels>
+              <ChannelCardList channelList={channelResults} itemsAlignTo="left" />
+            </WrapperChannels>
+          )}
         </div>
       </section>
     </div>

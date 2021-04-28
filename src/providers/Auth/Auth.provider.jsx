@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 
-import { AUTH_STORAGE_KEY, CURRENT_USER } from '../../utils/constants';
+import { CURRENT_USER } from '../../utils/constants';
 import { storage } from '../../utils/storage';
 
 const AuthContext = React.createContext(null);
@@ -26,14 +26,14 @@ function AuthProvider({ children }) {
   const login = (user) => {
     setAuthenticated(true);
     storage.set(CURRENT_USER, user);
-  }
+  };
 
   const getCurrentUser = () => {
     if (authenticated) {
       return storage.get(CURRENT_USER);
     }
     return null;
-  }
+  };
 
   const logout = useCallback(() => {
     setAuthenticated(false);

@@ -11,7 +11,7 @@ import styled from 'styled-components';
 export const WrapperVideos = styled.div`
   display: inline;
   text-align: center;
-  width: ${props => props.cardListWidth};
+  width: ${(props) => props.cardListWidth};
 `;
 
 export const WrapperChannels = styled.div`
