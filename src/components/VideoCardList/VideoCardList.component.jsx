@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './VideoCardList.styles.css';
 import VideoCard from '../VideoCard/VideoCard.component';
-import { getVideoId, getVideoSrc } from '../../utils/utils.js';
-import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
+import { getVideoSrc } from '../../utils/utils.js';
 
 const VideoCardList = ({ videoList, cardStyle, isFromFav, showCurrent = false }) => {
   
