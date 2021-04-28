@@ -71,7 +71,7 @@ test('Wrong credentials label show when invalid credentials.', async () => {
     const buttonLoginAfterTryingToLogin = screen.getByText(/Sign in/i, { selector: 'button' });
     expect(buttonLoginAfterTryingToLogin).toBeInTheDocument();
 });
-// version anterior de react-scripts
+// version anterior de react-scripts 3.4.3 4.0.1
 
 test('Correct behavior when user logs in with correct credentials, and logs out', async () => {
     setup();

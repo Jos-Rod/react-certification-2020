@@ -15,8 +15,6 @@ const SearchBar = () => {
     const { setSearchedValue, valueSearched } = useSiteInfo();
 
     function handlerClickSearch() {
-        console.log("Wow");
-        console.log(searchValue);
         setSearchedValue(searchValue);
     }
 

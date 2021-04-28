@@ -26,7 +26,6 @@ function useYTubeRequest(searchText, searchType) {
                 setList(val);
                 setJustSearched(true);
             }).catch((e) => {
-                console.log("Error while using youtube API");
                 console.log(e);
             });
         } else {

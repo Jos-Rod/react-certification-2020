@@ -14,7 +14,7 @@ function useAuth() {
 }
 
 function AuthProvider({ children }) {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(true);
 
   useEffect(() => {
     const lastAuthState = storage.get(CURRENT_USER);
@@ -22,11 +22,6 @@ function AuthProvider({ children }) {
 
     setAuthenticated(isAuthenticated);
   }, []);
-
-  // const login = useCallback(() => {
-  //   setAuthenticated(true);
-  //   storage.set(CURRENT_USER, true);
-  // }, []);
 
   const login = (user) => {
     setAuthenticated(true);

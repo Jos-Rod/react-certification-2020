@@ -1,6 +1,16 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import VideoCardList, { getTitle, getDescription, getVideoSrc } from './VideoCardList.component';
+import mock from '../mock/youtube-videos-mock.json';
+import SiteInfoProvider from '../../providers/SiteInfoProvider/SiteInfo.provider';
+
+const channelMock = mock.items[0];
+const videoMock = mock.items[1];
+
+
+const setup = () => {
+  render(<SiteInfoProvider><VideoCardList videoList={mock.items} /></SiteInfoProvider>);
+}
 
 const videoObjTest = [
   {
@@ -39,24 +49,9 @@ const videoObjTest = [
   },
 ];
 
-test('function to get title from data returns correct property value', () => {
-  const result = getTitle(videoObjTest[0]);
-  expect(result).toBe('12 Wishes from Wizeline | Happy Holidays 2019');
-});
+test('Renders correctly text of list of videos', () => {
+  setup();
 
-test('function to get description from data returns correct property value', () => {
-  const result = getDescription(videoObjTest[0]);
-  expect(result).toContain('this is an example description');
-});
-
-test('function to get video source from data returns correct property value', () => {
-  const result = getVideoSrc(videoObjTest[0]);
-  expect(result).toBe('https://i.ytimg.com/vi/ZmkslANDz0Q/hqdefault.jpg');
-});
-
-test('document includes text from the provided data', () => {
-  render(<VideoCardList />);
-
-  const search = screen.getByText(/Our vibrant Mexico City office is home to agile/i);
-  expect(search).toBeInTheDocument();
+  const containsTextOfVideo = screen.getByText(/Wizeline hace sentir a empleados como en casa/i);
+  expect(containsTextOfVideo).toBeInTheDocument();
 });

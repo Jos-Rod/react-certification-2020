@@ -16,8 +16,8 @@ const SideBar = () => {
 
     return (
         <>
-            <div id="mySidebar" class="sidebar">
-              <a href="javascript:void(0)" class="closebtn" onClick={closeNav}>×</a>
+            <div id="mySidebar" className="sidebar">
+              <a className="closebtn" onClick={closeNav}>×</a>
               <Link to="/">Home</Link>
               { authenticated ? <Link to="/favourites">Favourites</Link> : null }
             </div>

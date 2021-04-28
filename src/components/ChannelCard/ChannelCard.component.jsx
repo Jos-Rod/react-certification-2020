@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './ChannelCard.styles.css';
 import { getVideoSrc, getTitle } from '../../utils/utils.js';
 import { ChannelImage, FatherChannelCard } from './ChannelCard.styling';
-import { ThemeContext, useTheme } from 'styled-components';
 
 
 const ChannelCard = ({ channel }) => {

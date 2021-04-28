@@ -5,15 +5,17 @@ import { storage } from '../../utils/storage';
 import { getVideoId } from '../../utils/utils';
 
 const videoSelectedMock = mock.items[1];
+const channelMock = mock.items[0];
+const videosMock = [mock.items[1], mock.items[2], mock.items[3], mock.items[4]];
 
 
 const inicialState = {
     valueSearched: "",
-    selectedVideo: {},
+    selectedVideo: {}, // videoSelectedMock para testing
     showingModalLogin: false,
     withMock: false,
-    favouriteVideos: getAllFavouriteVideos(),
-    selectedVideoFav: {}
+    favouriteVideos: getAllFavouriteVideos(), // videosMock para testing
+    selectedVideoFav: {}, // videoSelectedMock para testing
 }
 
 const actions = {
@@ -64,20 +66,14 @@ function _saveOrRemoveVideoFavourites(video) {
     storageOnLS();
     let vFavourites = storage.get(VIDEO_FAVOURITES);
 
-    console.log("Adding to favo");
-    console.log(video);
-
     if (vFavourites.length === 0) {
-        console.log("First in list");
         vFavourites = [video];
         saveFavouritesList(vFavourites);
     } else if (vFavourites.some(vf => getVideoId(vf) == getVideoId(video))) {
-        console.log("Remove from list");
         // remove from list
         saveFavouritesList(vFavourites.filter(vf => getVideoId(vf) != getVideoId(video)));
     } else {
         // add to list
-        console.log("adding to list");
         vFavourites.push(video)
         saveFavouritesList(vFavourites);
     }

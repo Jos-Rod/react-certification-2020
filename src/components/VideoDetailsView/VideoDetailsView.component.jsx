@@ -32,8 +32,6 @@ const VideoDetailsView = () => {
     }, [selectedVideo]);
 
     function handleClickFavourite() {
-        console.log("por poner en favoritos");
-        console.log(selectedVideo);
         saveOrRemoveVideoFavourites(selectedVideo);
     }
 
@@ -59,7 +57,7 @@ const VideoDetailsView = () => {
                             <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
                                 <VideoTitleStyle theme={currentTheme} className="videoTitleStyle">{displayTitle}</VideoTitleStyle>
                                 { authenticated ? <div style={{ display: 'flex', alignItems: 'center', marginTop: 'auto', marginBottom: 'auto' }}>
-                                    <ButtonHoverItem onClick={handleClickFavourite} >
+                                    <ButtonHoverItem onClick={handleClickFavourite} aria-label="WOWW" >
                                         { isInList(favouriteVideos, selectedVideo) ? <FaHeart /> : <FaRegHeart /> } 
                                     </ButtonHoverItem>
                                 </div> : null}

@@ -1,6 +1,5 @@
 import React from 'react';
 import ChannelCard from '../ChannelCard';
-import './ChannelCardList.styles.css';
 import {getChannelId} from '../../utils/utils.js';
 
 const ChannelCardList = ({ channelList, itemsAlignTo }) => {

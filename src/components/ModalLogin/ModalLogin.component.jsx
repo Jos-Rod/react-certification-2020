@@ -29,8 +29,6 @@ const ModalLogin = ({ theme }) =>  {
             setPassword('');
             // close modal
             showOrHideModalLogin();
-            console.log("Now the login is");
-            console.log(authenticated);
         }).catch(err => {
             setErrorLogin(true);
             logout();
