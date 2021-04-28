@@ -20,7 +20,6 @@ import SideBar from '../SideBar/SideBar.component';
 import Favourites from '../../pages/Favourites/Favourites.page';
 import VideoDetailsFavourite from '../../pages/VideoDetailsFavourite';
 // import mock from '../mock/youtube-videos-mock.json';
-
 // const videoSelectedMock = mock.items[1];
 // const allVideos = mock.items;
 
