@@ -100,7 +100,7 @@ function SiteInfoProvider({ children }) {
     saveOrRemoveVideoFavourites: (val) => {
       saveOrRemoveVideoFavouritesProvider(val);
       dispatch({ type: actions.UPDATE_FAVOURITES_LIST, val });
-    }
+    },
   };
 
   return <SiteContext.Provider value={value}>{children}</SiteContext.Provider>;
