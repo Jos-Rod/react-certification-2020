@@ -17,6 +17,7 @@ const VideoCard = ({ video, cardStyle, isFromFav = false, currentVideoId }) => {
   function handleClickOnVideoCard() {
     if (isFromFav) {
       console.log('Click en uno favorito');
+      console.log(video);
       history.push(`/vdf/${video.id}`);
     } else {
       console.log('Click en uno normal');

@@ -45,7 +45,7 @@ const inicialState = {
   valueSearched: '',
   showingModalLogin: false,
   withMock: false,
-  favouriteVideos: videosMock //getAllFavouriteVideos(), // videosMock para testing
+  favouriteVideos: getAllFavouriteVideos(), // videosMock para testing
 };
 
 const actions = {

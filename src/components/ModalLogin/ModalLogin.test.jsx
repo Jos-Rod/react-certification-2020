@@ -28,10 +28,10 @@ test('Login title exists', () => {
   expect(title).toBeInTheDocument();
 });
 
-test('email and password labels for inputs exists', () => {
+test('username and password labels for inputs exists', () => {
   setup();
 
-  const emailLabel = screen.getByText(/email:/i);
+  const emailLabel = screen.getByText(/username:/i);
   const passwordLabel = screen.getByText(/password:/i);
   expect(emailLabel).toBeInTheDocument();
   expect(passwordLabel).toBeInTheDocument();
@@ -46,13 +46,13 @@ test('Message of invalid credentials not showing', () => {
 
 test('Inputs correct behavior of writing.', () => {
   setup();
-  const inputEmail = screen.getByPlaceholderText('email');
+  const inputUsername = screen.getByPlaceholderText('username');
   const inputPassword = screen.getByPlaceholderText('password');
 
-  fireEvent.change(inputEmail, { target: { value: 'hello' } });
+  fireEvent.change(inputUsername, { target: { value: 'hello' } });
   fireEvent.change(inputPassword, { target: { value: 'world' } });
 
-  expect(inputEmail.value).toBe('hello');
+  expect(inputUsername.value).toBe('hello');
   expect(inputPassword.value).toBe('world');
 });
 
@@ -65,10 +65,10 @@ test('Button to close modal showing', async () => {
 
 test('Wrong credentials label show when invalid credentials.', async () => {
   setup();
-  const inputEmail = screen.getByPlaceholderText('email');
+  const inputUsername = screen.getByPlaceholderText('username');
   const inputPassword = screen.getByPlaceholderText('password');
 
-  fireEvent.change(inputEmail, { target: { value: 'hello' } });
+  fireEvent.change(inputUsername, { target: { value: 'hello' } });
   fireEvent.change(inputPassword, { target: { value: 'world' } });
 
   const buttonLogin = screen.getByText(/Sign in/i, { selector: 'button' });
@@ -85,10 +85,10 @@ test('Wrong credentials label show when invalid credentials.', async () => {
 
 test('Correct behavior when user logs in with correct credentials, and logs out', async () => {
   setup();
-  const inputEmail = screen.getByPlaceholderText('email');
+  const inputUsername = screen.getByPlaceholderText('username');
   const inputPassword = screen.getByPlaceholderText('password');
 
-  fireEvent.change(inputEmail, { target: { value: 'hi' } });
+  fireEvent.change(inputUsername, { target: { value: 'hi' } });
   fireEvent.change(inputPassword, { target: { value: '123' } });
 
   const buttonLogin = screen.getByText(/Sign in/i, { selector: 'button' });

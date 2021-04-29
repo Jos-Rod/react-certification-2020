@@ -3,9 +3,7 @@ import { HashRouter, Switch, Route } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
-import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
-import SecretPage from '../../pages/Secret';
 import Private from '../Private';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
@@ -83,16 +81,10 @@ function App() {
                   {/* {Object.keys(selectedVideo).length > 0 &&  <VideoDetailsView /> } */}
                   {/* <HomePage videoResults={allVideos} channelResults={[]} setVideoSelected={setCurrentVideo} /> */}
                 </Route>
-                <Route exact path="/login">
-                  <LoginPage />
-                </Route>
                 <Route exact path="/vd/:id">
                   <NavBar homeAction={goHome} />
                   <VideoDetailsView />
                 </Route>
-                <Private exact path="/secret">
-                  <SecretPage />
-                </Private>
                 <Private path="/favourites">
                   <NavBar homeAction={goHome} />
                   <Favourites />

@@ -7,7 +7,7 @@ import NiceInput from '../NiceInput/NiceInput.component';
 import { Modal, ModalStructure } from './ModalLogin.styling';
 
 const ModalLogin = ({ theme }) => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorLogin, setErrorLogin] = useState(false);
 
@@ -18,13 +18,13 @@ const ModalLogin = ({ theme }) => {
 
   // value, handleOnChange
   async function handleLoginButtonClick() {
-    loginApi(email, password)
+    loginApi(username, password)
       .then((res) => {
         setErrorLogin(false);
         // store user on local storage
         login(res);
         // empty fields
-        setEmail('');
+        setUsername('');
         setPassword('');
         // close modal
         showOrHideModalLogin();
@@ -57,10 +57,10 @@ const ModalLogin = ({ theme }) => {
         {!authenticated ? (
           <div style={{ paddingLeft: '50px', paddingRight: '50px' }}>
             <NiceInput
-              placeholder="email"
-              withLabel="email"
-              value={email}
-              setValue={setEmail}
+              placeholder="username"
+              withLabel="username"
+              value={username}
+              setValue={setUsername}
               aria-label="email-input"
             />
             <NiceInput

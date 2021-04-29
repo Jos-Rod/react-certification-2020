@@ -93,7 +93,7 @@ const VideoDetailsFavourite = () => {
                       }}
                     >
                       <ButtonHoverItem onClick={handleClickFavourite}>
-                        {isInList(favouriteVideos, videoFromId) ? (
+                        {!isInList(favouriteVideos, currentVideo) ? (
                           <FaRegHeart />
                         ) : (
                           <FaHeart />
