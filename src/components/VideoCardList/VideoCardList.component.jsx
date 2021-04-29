@@ -3,7 +3,7 @@ import './VideoCardList.styles.css';
 import VideoCard from '../VideoCard/VideoCard.component';
 import { getVideoSrc } from '../../utils/utils';
 
-const VideoCardList = ({ videoList, cardStyle, isFromFav, showCurrent = false }) => {
+const VideoCardList = ({ videoList, cardStyle, isFromFav, currentVideoId }) => {
   const [videosToRender, setVideosToRender] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const VideoCardList = ({ videoList, cardStyle, isFromFav, showCurrent = false })
               key={getVideoSrc(vid)}
               cardStyle={cardStyle}
               isFromFav={isFromFav}
-              showCurrent={showCurrent}
+              currentVideoId={currentVideoId}
             />
           )
       )}

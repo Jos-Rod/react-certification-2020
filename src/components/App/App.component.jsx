@@ -98,7 +98,7 @@ function App() {
                   <NavBar homeAction={goHome} />
                   <Favourites />
                 </Private>
-                <Private path="/vdf">
+                <Private path="/vdf/:id">
                   <NavBar homeAction={goHome} />
                   <VideoDetailsFavourite />
                 </Private>

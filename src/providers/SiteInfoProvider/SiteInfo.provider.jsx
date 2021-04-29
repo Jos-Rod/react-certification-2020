@@ -30,9 +30,9 @@ function saveOrRemoveVideoFavouritesProvider(video) {
   if (vFavourites.length === 0) {
     vFavourites = [video];
     saveFavouritesList(vFavourites);
-  } else if (vFavourites.some((vf) => getVideoId(vf) === getVideoId(video))) {
+  } else if (vFavourites.some((vf) => vf.id === video.id)) {
     // remove from list
-    saveFavouritesList(vFavourites.filter((vf) => getVideoId(vf) !== getVideoId(video)));
+    saveFavouritesList(vFavourites.filter((vf) => vf.id !== video.id));
   } else {
     // add to list
     vFavourites.push(video);
@@ -72,8 +72,6 @@ function reducer(state, action) {
     case actions.UPDATE_FAVOURITES_LIST:
       return { ...state, favouriteVideos: getAllFavouriteVideos() };
     case actions.SET_SELECTED_VIDEO_FAV:
-      console.log(`selected video fav`);
-      console.log(action);
       return { ...state, selectedVideoFav: action.val };
     default:
       break;

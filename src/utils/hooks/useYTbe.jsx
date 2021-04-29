@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { API_KEY, BASE_URL_YT_SEARCH } from '../constants';
+import { API_KEY, BASE_URL_YT_SEARCH, BASE_URL_YT_VIDEOS } from '../constants';
 
 function useYTubeRequest(searchText, searchType) {
   const [list, setList] = useState({});
@@ -18,22 +18,29 @@ function useYTubeRequest(searchText, searchType) {
     `${BASE_URL_YT_SEARCH}?part=snippet&maxResults=15&${searchTypeOnURL}&key=${API_KEY}`,
     myInit
   );
+  const myrequestForGettingVideoInfo = new Request(
+    `${BASE_URL_YT_VIDEOS}?part=snippet&id=${searchText}&key=${API_KEY}`,
+    myInit
+  );
 
   useEffect(() => {
     setJustSearched(false);
-    if (searchText != null) {
-      fetch(myrequest)
-        .then((res) => res.json())
-        .then((val) => {
-          setList(val);
-          setJustSearched(true);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    } else {
-      console.log('Do not search');
-    }
+    // if (searchType !== "GET_VIDEO_FROM_ID") {
+      if (searchText != null) {
+        fetch(searchType !== "GET_VIDEO_FROM_ID" ? myrequest : myrequestForGettingVideoInfo)
+          .then((res) => res.json())
+          .then((val) => {
+            console.log("Resultado");
+            console.log(val);
+            setList(val);
+            setJustSearched(true);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      } else {
+        console.log('Do not search');
+      }
   }, [searchText]);
 
   if (!justSearched || Object.keys(list).length === 0) {
@@ -41,6 +48,7 @@ function useYTubeRequest(searchText, searchType) {
   }
 
   if (list.items) {
+    if (list.pageInfo.totalResults === 1) return { videos: list.items, channels: [] };
     return {
       videos: list.items.filter((v) => v.id.kind.includes('video')),
       channels: list.items.filter((v) => v.id.kind.includes('channel')),

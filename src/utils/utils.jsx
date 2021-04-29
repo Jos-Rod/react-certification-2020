@@ -43,6 +43,6 @@ export function getChannelId(video) {
 export function isInList(videoList, video) {
   if (videoList.length === 0) return false;
   if (!video) return false;
-  if (getVideoId(video) === '') return false;
-  return videoList.filter((v) => getVideoId(v) === getVideoId(video)).length > 0;
+  if (video.id === '') return false;
+  return videoList.filter((v) => v.id === video.id).length > 0;
 }

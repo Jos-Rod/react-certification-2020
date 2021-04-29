@@ -19,38 +19,45 @@ import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider'
 import useYTubeRequest from '../../utils/hooks/useYTbe';
 import { ButtonHoverItem } from '../NavBar/NavBar-styling';
 import { useAuth } from '../../providers/Auth';
+import { useParams } from 'react-router';
 
 const VideoDetailsView = () => {
   const {
-    selectedVideo,
     withMock,
     saveOrRemoveVideoFavourites,
     favouriteVideos,
   } = useSiteInfo();
+  const { currentTheme } = useContext(ThemeContext);
+  const { authenticated } = useAuth();
+  const { id } = useParams();
   const [displayTitle, setDisplayTitle] = useState('');
   const [displayDescription, setDisplayDescription] = useState('');
   const [videoSource, setVideoSource] = useState('');
+  const [currentVideo, setCurrentVideo] = useState({});
   const videosRelated = useYTubeRequest(
-    Object.keys(selectedVideo).length > 0 ? getVideoId(selectedVideo) : 'wizeline',
+    id ? id : 'wizeline',
     'SEARCH_RELATED'
   );
-
-  const { currentTheme } = useContext(ThemeContext);
-  const { authenticated } = useAuth();
+  const videoFromId = useYTubeRequest(
+    id,
+    'GET_VIDEO_FROM_ID'
+  );
 
   useEffect(() => {
-    if (Object.keys(selectedVideo).length > 0) {
-      // set video info
-      setDisplayTitle(getTitle(selectedVideo));
-      setDisplayDescription(getDescription(selectedVideo));
-      setVideoSource(
-        `https://www.youtube.com/embed/${getVideoId(selectedVideo)}?enablejsapi=1`
-      );
-    }
-  }, [selectedVideo]);
+    setVideoSource(
+      `https://www.youtube.com/embed/${id}?enablejsapi=1`
+    );
+  });
+
+  useEffect(() => {
+    const vid = videoFromId.videos[0];
+    setCurrentVideo(vid);
+    setDisplayTitle(getTitle(vid));
+    setDisplayDescription(getDescription(vid));
+  }, [videoFromId]);
 
   function handleClickFavourite() {
-    saveOrRemoveVideoFavourites(selectedVideo);
+    saveOrRemoveVideoFavourites(currentVideo);
   }
 
   return (
@@ -98,7 +105,7 @@ const VideoDetailsView = () => {
                       }}
                     >
                       <ButtonHoverItem onClick={handleClickFavourite} aria-label="WOWW">
-                        {isInList(favouriteVideos, selectedVideo) ? (
+                        {isInList(favouriteVideos, currentVideo) ? (
                           <FaHeart />
                         ) : (
                           <FaRegHeart />

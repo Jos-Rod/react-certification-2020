@@ -12,17 +12,17 @@ import ThemeContext from '../../providers/Theme/Theme.provider';
 
 import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
 
-const VideoCard = ({ video, cardStyle, isFromFav = false }) => {
+const VideoCard = ({ video, cardStyle, isFromFav = false, currentVideoId }) => {
   const history = useHistory();
   const { currentTheme } = useContext(ThemeContext);
 
-  const { setSelectedVideo, setSelectedVideoFav, selectedVideoFav } = useSiteInfo();
+  const { setSelectedVideo, setSelectedVideoFav } = useSiteInfo();
 
   function handleClickOnVideoCard() {
     if (isFromFav) {
       console.log('Click en uno favorito');
       setSelectedVideoFav(video);
-      history.push(`/vdf/${getVideoId(video)}`);
+      history.push(`/vdf/${video.id}`);
     } else {
       console.log('Click en uno normal');
       setSelectedVideo(video);
@@ -30,22 +30,12 @@ const VideoCard = ({ video, cardStyle, isFromFav = false }) => {
     }
   }
 
-  function isCurrentVideo() {
-    if (Object.keys(selectedVideoFav).length === 0) {
-      return false;
-    }
-    if (getVideoId(selectedVideoFav) === getVideoId(video)) {
-      return true;
-    }
-    return false;
-  }
-
   return (
     <span style={{ cursor: 'pointer' }}>
       <VideoCardStyled
         theme={currentTheme}
         cardStyle={cardStyle}
-        isCurrent={isCurrentVideo()}
+        isCurrent={currentVideoId ? currentVideoId === (isFromFav ? video.id : getVideoId(video)) : false}
         onClick={handleClickOnVideoCard}
       >
         {/* video */}
