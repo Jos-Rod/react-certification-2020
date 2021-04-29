@@ -1,5 +1,5 @@
 import React, { useReducer, useContext } from 'react';
-import { VIDEO_FAVOURITES } from '../../utils/constants';
+import { videosMock, VIDEO_FAVOURITES } from '../../utils/constants';
 import { storage } from '../../utils/storage';
 
 // FAVOURITES LOGIC START
@@ -45,7 +45,7 @@ const inicialState = {
   valueSearched: '',
   showingModalLogin: false,
   withMock: false,
-  favouriteVideos: getAllFavouriteVideos(), // videosMock para testing
+  favouriteVideos: videosMock //getAllFavouriteVideos(), // videosMock para testing
 };
 
 const actions = {

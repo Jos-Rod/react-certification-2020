@@ -53,3 +53,12 @@ test('Navbar contains the right amount of buttons', () => {
   const buttons = screen.getAllByRole('button');
   expect(buttons.length).toBe(5);
 });
+
+test('Button dark mode can be clicked', () => {
+  setup();
+
+  //buttonDarkMode
+  const buttonDarkMode = screen.getByTestId('buttonDarkMode');
+  fireEvent.click(buttonDarkMode);
+  expect(buttonDarkMode).toBeInTheDocument();
+});

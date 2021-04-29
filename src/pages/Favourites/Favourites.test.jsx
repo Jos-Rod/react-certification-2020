@@ -24,7 +24,7 @@ test('Favourite Videos title exists', () => {
 test('Title of video on list is rendered correctly', () => {
   setup();
 
-  const titleOfVideo = screen.getByText(/We Are Wizeline/i);
+  const titleOfVideo = screen.getByText(/Video Tour | Welcome to Wizeline Guadalajara/i);
   const descriptionVideo = screen.getByText(
     /En el 2014, Bismarck fundó Wizeline, compañía tecnológica que trabaja con los corporativos ofreciendo una plataforma para que desarrollen software de forma .../i
   );

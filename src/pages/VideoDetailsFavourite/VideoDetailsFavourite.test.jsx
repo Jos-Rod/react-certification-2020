@@ -7,10 +7,10 @@ import AuthProvider from '../../providers/Auth';
 const setup = () => {
   render(
     <AuthProvider>
-      <SiteInfoProvider>
-        <VideoDetailsFavourite />
-      </SiteInfoProvider>
-    </AuthProvider>
+        <SiteInfoProvider>
+          <VideoDetailsFavourite />
+        </SiteInfoProvider>
+      </AuthProvider>
   );
 };
 

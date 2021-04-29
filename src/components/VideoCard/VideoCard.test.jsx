@@ -9,7 +9,7 @@ const videoMock = mock.items[1];
 const setup = () => {
   render(
     <SiteInfoProvider>
-      <VideoCard video={videoMock} />
+      <VideoCard video={videoMock} isFromFav={true} />
     </SiteInfoProvider>
   );
 };

@@ -61,7 +61,7 @@ const NavBar = (props) => {
           <ButtonHoverItem
             style={{ marginRight: '10px' }}
             theme={currentTheme}
-            id="buttonDarkMode"
+            data-testid="buttonDarkMode"
             onClick={changeColorMode}
           >
             {currentTheme === themes.light ? <FaRegMoon className="ASDF" /> : <FaSun />}
@@ -69,7 +69,6 @@ const NavBar = (props) => {
           <ButtonHoverItem
             style={{ marginRight: '10px' }}
             theme={currentTheme}
-            className="buttonUser"
             onClick={handleClickLoginButton}
           >
             {!authenticated ? <FaUserAltSlash /> : <FaUserAlt />}
