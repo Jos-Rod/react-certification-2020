@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { IconContext } from 'react-icons';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { useParams } from 'react-router';
 import { getDescription, getTitle, isInList } from '../../utils/utils';
 import ThemeContext from '../../providers/Theme/Theme.provider';
 import {
@@ -17,14 +18,10 @@ import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider'
 import { useAuth } from '../../providers/Auth';
 import { ButtonHoverItem } from '../../components/NavBar/NavBar-styling';
 import VideoCardList from '../../components/VideoCardList';
-import { useParams } from 'react-router';
 import useYTubeRequest from '../../utils/hooks/useYTbe';
 
 const VideoDetailsFavourite = () => {
-  const {
-    saveOrRemoveVideoFavourites,
-    favouriteVideos,
-  } = useSiteInfo();
+  const { saveOrRemoveVideoFavourites, favouriteVideos } = useSiteInfo();
   const [displayTitle, setDisplayTitle] = useState('');
   const [displayDescription, setDisplayDescription] = useState('');
   const { id } = useParams();
@@ -32,20 +29,15 @@ const VideoDetailsFavourite = () => {
   const [currentVideo, setCurrentVideo] = useState({});
   const { currentTheme } = useContext(ThemeContext);
   const { authenticated } = useAuth();
-  const videoFromId = useYTubeRequest(
-    id,
-    'GET_VIDEO_FROM_ID'
-  );
+  const videoFromId = useYTubeRequest(id, 'GET_VIDEO_FROM_ID');
 
   useEffect(() => {
-    setVideoSource(
-      `https://www.youtube.com/embed/${id}?enablejsapi=1`
-    );
+    setVideoSource(`https://www.youtube.com/embed/${id}?enablejsapi=1`);
   });
 
   useEffect(() => {
     const vid = videoFromId.videos[0];
-    console.log("Video wow");
+    console.log('Video wow');
     console.log(videoFromId);
     setCurrentVideo(vid);
     setDisplayTitle(getTitle(vid));

@@ -26,21 +26,19 @@ function useYTubeRequest(searchText, searchType) {
   useEffect(() => {
     setJustSearched(false);
     // if (searchType !== "GET_VIDEO_FROM_ID") {
-      if (searchText != null) {
-        fetch(searchType !== "GET_VIDEO_FROM_ID" ? myrequest : myrequestForGettingVideoInfo)
-          .then((res) => res.json())
-          .then((val) => {
-            console.log("Resultado");
-            console.log(val);
-            setList(val);
-            setJustSearched(true);
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-      } else {
-        console.log('Do not search');
-      }
+    if (searchText != null) {
+      fetch(searchType !== 'GET_VIDEO_FROM_ID' ? myrequest : myrequestForGettingVideoInfo)
+        .then((res) => res.json())
+        .then((val) => {
+          setList(val);
+          setJustSearched(true);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    } else {
+      console.log('Do not search');
+    }
   }, [searchText]);
 
   if (!justSearched || Object.keys(list).length === 0) {

@@ -49,13 +49,12 @@ function App() {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   });
 
-  const { valueSearched, setSelectedVideo, setSearchedValue } = useSiteInfo();
+  const { valueSearched, setSearchedValue } = useSiteInfo();
   const [valSearch, setValSearch] = useState('');
   const { videos, channels } = useYTubeRequest(valSearch, 'SEARCH_VIDEOS');
 
   function goHome() {
     setValSearch('');
-    setSelectedVideo({});
     setSearchedValue('');
   }
 

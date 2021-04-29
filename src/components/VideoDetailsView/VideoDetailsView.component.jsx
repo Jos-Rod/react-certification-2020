@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { IconContext } from 'react-icons';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { getDescription, getTitle, getVideoId, isInList } from '../../utils/utils';
+import { useParams } from 'react-router';
+import { getDescription, getTitle, isInList } from '../../utils/utils';
 import VideoCardList from '../VideoCardList';
 import {
   GrandContainerVideo,
@@ -19,14 +20,9 @@ import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider'
 import useYTubeRequest from '../../utils/hooks/useYTbe';
 import { ButtonHoverItem } from '../NavBar/NavBar-styling';
 import { useAuth } from '../../providers/Auth';
-import { useParams } from 'react-router';
 
 const VideoDetailsView = () => {
-  const {
-    withMock,
-    saveOrRemoveVideoFavourites,
-    favouriteVideos,
-  } = useSiteInfo();
+  const { withMock, saveOrRemoveVideoFavourites, favouriteVideos } = useSiteInfo();
   const { currentTheme } = useContext(ThemeContext);
   const { authenticated } = useAuth();
   const { id } = useParams();
@@ -34,19 +30,11 @@ const VideoDetailsView = () => {
   const [displayDescription, setDisplayDescription] = useState('');
   const [videoSource, setVideoSource] = useState('');
   const [currentVideo, setCurrentVideo] = useState({});
-  const videosRelated = useYTubeRequest(
-    id ? id : 'wizeline',
-    'SEARCH_RELATED'
-  );
-  const videoFromId = useYTubeRequest(
-    id,
-    'GET_VIDEO_FROM_ID'
-  );
+  const videosRelated = useYTubeRequest(id || 'wizeline', 'SEARCH_RELATED');
+  const videoFromId = useYTubeRequest(id, 'GET_VIDEO_FROM_ID');
 
   useEffect(() => {
-    setVideoSource(
-      `https://www.youtube.com/embed/${id}?enablejsapi=1`
-    );
+    setVideoSource(`https://www.youtube.com/embed/${id}?enablejsapi=1`);
   });
 
   useEffect(() => {

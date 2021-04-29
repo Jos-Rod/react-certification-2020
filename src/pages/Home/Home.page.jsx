@@ -3,7 +3,7 @@ import { WrapperChannels, WrapperVideos } from './Home.stying';
 import VideoCardList from '../../components/VideoCardList';
 import ChannelCardList from '../../components/ChannelCardList';
 
-function HomePage({ videoResults, channelResults, setVideoSelected }) {
+function HomePage({ videoResults, channelResults }) {
   const cardListWidth = channelResults.length > 0 ? '70%' : '100%';
   //  cardListWidth
   return (
@@ -11,7 +11,7 @@ function HomePage({ videoResults, channelResults, setVideoSelected }) {
       <section>
         <div style={{ display: 'flex' }}>
           <WrapperVideos cardListWidth={cardListWidth}>
-            <VideoCardList videoList={videoResults} setVideoSelected={setVideoSelected} />
+            <VideoCardList videoList={videoResults} />
           </WrapperVideos>
           {channelResults.length > 0 && (
             <WrapperChannels>

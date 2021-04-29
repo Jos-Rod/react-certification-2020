@@ -10,22 +10,16 @@ import {
 } from './VideoCard-styling';
 import ThemeContext from '../../providers/Theme/Theme.provider';
 
-import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
-
 const VideoCard = ({ video, cardStyle, isFromFav = false, currentVideoId }) => {
   const history = useHistory();
   const { currentTheme } = useContext(ThemeContext);
 
-  const { setSelectedVideo, setSelectedVideoFav } = useSiteInfo();
-
   function handleClickOnVideoCard() {
     if (isFromFav) {
       console.log('Click en uno favorito');
-      setSelectedVideoFav(video);
       history.push(`/vdf/${video.id}`);
     } else {
       console.log('Click en uno normal');
-      setSelectedVideo(video);
       history.push(`/vd/${getVideoId(video)}`);
     }
   }
@@ -35,7 +29,11 @@ const VideoCard = ({ video, cardStyle, isFromFav = false, currentVideoId }) => {
       <VideoCardStyled
         theme={currentTheme}
         cardStyle={cardStyle}
-        isCurrent={currentVideoId ? currentVideoId === (isFromFav ? video.id : getVideoId(video)) : false}
+        isCurrent={
+          currentVideoId
+            ? currentVideoId === (isFromFav ? video.id : getVideoId(video))
+            : false
+        }
         onClick={handleClickOnVideoCard}
       >
         {/* video */}
