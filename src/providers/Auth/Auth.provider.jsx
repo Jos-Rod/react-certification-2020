@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 
-import { AUTH_STORAGE_KEY } from '../../utils/constants';
+import { CURRENT_USER } from '../../utils/constants';
 import { storage } from '../../utils/storage';
 
 const AuthContext = React.createContext(null);
@@ -14,27 +14,34 @@ function useAuth() {
 }
 
 function AuthProvider({ children }) {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(true);
 
   useEffect(() => {
-    const lastAuthState = storage.get(AUTH_STORAGE_KEY);
-    const isAuthenticated = Boolean(lastAuthState);
+    const lastAuthState = storage.get(CURRENT_USER);
+    const isAuthenticated = lastAuthState != null;
 
     setAuthenticated(isAuthenticated);
   }, []);
 
-  const login = useCallback(() => {
+  const login = (user) => {
     setAuthenticated(true);
-    storage.set(AUTH_STORAGE_KEY, true);
-  }, []);
+    storage.set(CURRENT_USER, user);
+  };
+
+  const getCurrentUser = () => {
+    if (authenticated) {
+      return storage.get(CURRENT_USER);
+    }
+    return null;
+  };
 
   const logout = useCallback(() => {
     setAuthenticated(false);
-    storage.set(AUTH_STORAGE_KEY, false);
+    storage.set(CURRENT_USER, null);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ login, logout, authenticated }}>
+    <AuthContext.Provider value={{ login, logout, authenticated, getCurrentUser }}>
       {children}
     </AuthContext.Provider>
   );

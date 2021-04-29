@@ -1,45 +1,25 @@
-import React from 'react'; // commented { useRef }
-// import { useHistory, Link } from 'react-router-dom';
-
-// import { useAuth } from '../../providers/Auth';
-import './Home.styles.css';
+import React from 'react';
+import { WrapperChannels, WrapperVideos } from './Home.stying';
 import VideoCardList from '../../components/VideoCardList';
+import ChannelCardList from '../../components/ChannelCardList';
 
-function HomePage() {
-  // const history = useHistory();
-  // const sectionRef = useRef(null);
-  // const { authenticated, logout } = useAuth();
-
-  // function deAuthenticate(event) {
-  //   event.preventDefault();
-  //   logout();
-  //   history.push('/');
-  // }
-
+function HomePage({ videoResults, channelResults }) {
+  const cardListWidth = channelResults.length > 0 ? '70%' : '100%';
+  //  cardListWidth
   return (
-    <div style={{ marginTop: 80 }}>
+    <div style={{ marginTop: 100 }}>
       <section>
-        <div>
-          <VideoCardList />
+        <div style={{ display: 'flex' }}>
+          <WrapperVideos cardListWidth={cardListWidth}>
+            <VideoCardList videoList={videoResults} />
+          </WrapperVideos>
+          {channelResults.length > 0 && (
+            <WrapperChannels>
+              <ChannelCardList channelList={channelResults} itemsAlignTo="left" />
+            </WrapperChannels>
+          )}
         </div>
       </section>
-      {/* <section className="homepage" ref={sectionRef}>
-        <h1>Hello stranger!</h1>
-        {authenticated ? (
-          <>
-            <h2>Good to have you back</h2>
-            <span>
-              <Link to="/" onClick={deAuthenticate}>
-                ← logout
-              </Link>
-              <span className="separator" />
-              <Link to="/secret">show me something cool →</Link>
-            </span>
-          </>
-        ) : (
-          <Link to="/login">let me in →</Link>
-        )}
-      </section> */}
     </div>
   );
 }

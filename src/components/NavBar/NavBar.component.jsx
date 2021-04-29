@@ -1,36 +1,82 @@
-import React from 'react';
-import './NavBar.styles.css';
-import { FaUserAlt, FaRegMoon } from 'react-icons/fa'; // FaHamburger, FaMoon
+import React, { useContext } from 'react';
+import { FaUserAlt, FaRegMoon, FaSun, FaUserAltSlash } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { IconContext } from 'react-icons';
+import { Link } from 'react-router-dom';
+import ReactDOM from 'react-dom';
+import SearchBar from '../SearchBar';
+import ThemeContext, { themes } from '../../providers/Theme/Theme.provider';
+import {
+  ButtonHome,
+  NavBarStyled,
+  ButtonHoverItem,
+  NotDisplayWhenSmall,
+} from './NavBar-styling';
+import { useSiteInfo } from '../../providers/SiteInfoProvider/SiteInfo.provider';
+import ModalLogin from '../ModalLogin/ModalLogin.component';
+import { useAuth } from '../../providers/Auth/Auth.provider';
 
+const NavBar = (props) => {
+  const { currentTheme, updateCurrentTheme } = useContext(ThemeContext);
+  const { showingModalLogin, showOrHideModalLogin } = useSiteInfo();
+  const { authenticated } = useAuth();
 
-const NavBar = () => (
-  <IconContext.Provider
-    value={{ style: { fontSize: '36px', color: 'rgb(255, 255, 224)' } }}
-  >
-    <div className="navBar">
-      <div style={{ marginLeft: '30px', display: 'flex', alignItems: 'center' }}>
-        <GiHamburgerMenu />
-      </div>
-      <div>
-        <span />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <input className="niceInput" placeholder="Search..." />
-        <button className="buttonSearch">Search</button>
-      </div>
-      <div className="rightActions" style={{ display: 'flex', alignItems: 'center' }}>
-        <button className="buttonUser">
-          <FaRegMoon />
-        </button>
-        <p style={{ display: 'inline', marginLeft: 13, marginRight: 13 }}>Dark mode</p>
-        <button className="buttonUser">
-          <FaUserAlt />
-        </button>
-      </div>
-    </div>
-  </IconContext.Provider>
-);
+  function changeColorMode() {
+    updateCurrentTheme(currentTheme === themes.dark ? themes.light : themes.dark);
+  }
+
+  function handleClickLoginButton() {
+    showOrHideModalLogin();
+  }
+
+  function openNav() {
+    document.getElementById('mySidebar').style.width = '250px';
+  }
+
+  return (
+    <>
+      {showingModalLogin
+        ? ReactDOM.createPortal(
+            <ModalLogin theme={currentTheme} />,
+            document.getElementById('modallogin')
+          )
+        : null}
+      {/* <ModalLogin theme={currentTheme}>
+        </ModalLogin> */}
+      <NavBarStyled theme={currentTheme}>
+        <div style={{ marginLeft: '30px', display: 'flex', alignItems: 'center' }}>
+          <ButtonHoverItem onClick={openNav}>
+            <GiHamburgerMenu />
+          </ButtonHoverItem>
+          <NotDisplayWhenSmall>
+            <Link to="/" onClick={props.homeAction}>
+              <ButtonHome style={{ marginLeft: '30px' }} theme={currentTheme}>
+                YouZline
+              </ButtonHome>
+            </Link>
+          </NotDisplayWhenSmall>
+        </div>
+        <SearchBar />
+        <div style={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>
+          {/* Button for changing color mode */}
+          <ButtonHoverItem
+            style={{ marginRight: '10px' }}
+            theme={currentTheme}
+            data-testid="buttonDarkMode"
+            onClick={changeColorMode}
+          >
+            {currentTheme === themes.light ? <FaRegMoon className="ASDF" /> : <FaSun />}
+          </ButtonHoverItem>
+          <ButtonHoverItem
+            style={{ marginRight: '10px' }}
+            theme={currentTheme}
+            onClick={handleClickLoginButton}
+          >
+            {!authenticated ? <FaUserAltSlash /> : <FaUserAlt />}
+          </ButtonHoverItem>
+        </div>
+      </NavBarStyled>
+    </>
+  );
+};
 
 export default NavBar;
